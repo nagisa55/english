@@ -41,4 +41,7 @@
     <% end %>
   </div>
 </div>
+<div>
+  <%= link_to "アカウント削除", user_path, method: :delete, data: { confirm: "アカウントを削除しますか?" }, class: "btn btn-danger"%>
+</div>
 <%= link_to "◀︎戻る", user_path(current_user) %>

@@ -1,4 +1,9 @@
 class PostsController < ApplicationController
+
+  def index
+    @posts = Post.where(id: params[:category_id]).order(created_at: :desc)
+  end
+
   def new
     @post = Post.new
   end
@@ -7,9 +12,9 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to @user
+      redirect_to user_path(current_user)
     else
-      redirect_to "/"
+      render :new
     end
   end
 
@@ -26,6 +31,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:category, :title, :material, :content)
+    params.require(:post).permit(:category, :title, :material, :content, :caegory_id)
   end
 end

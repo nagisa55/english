@@ -1,38 +1,24 @@
 <h2>新規投稿</h2>
 <div class="row">
   <div class="col-md-6 mx-auto">
-    <%= form_with(model:@post, local:true) do |f| %>
-      <div class="form-group">
-        <p>カテゴリー</p>
-        <div class="category_menu">
-          <%=f.radio_button :category, "リスニング" %>
-          <%= f.label :category, "リスニング", value: "リスニング", required: true %>
-        </div>
-        <div class="category_menu">
-          <%=f.radio_button :category, "ライティング" %>
-          <%= f.label :category, "ライティング", value: "ライティング", required: true %>
-        </div>
-        <div class="category_menu">
-          <%=f.radio_button :category, "リーディング" %>
-          <%= f.label :category, "リーディング", value: "リーディング", required: true %>
-        </div>
-        <div class="category_menu">
-          <%=f.radio_button :category, "スピーキング" %>
-          <%= f.label :category, "スピーキング", value: "スピーキング", required: true %>
-        </div>
-      </div>
+
+      <%= form_with(model:@post, local:true) do |f| %>
       <div class="form-group">
         <%= f.label :title, "タイトル" %>
-        <%= f.text_field :content %>
+        <%= f.text_field :title %>
       </div>
       <div class="form-group">
         <%= f.label :content, "勉強方法" %>
         <%= f.text_area :content %>
       </div>
       <div class="form-group">
-        <%= f.label :content, "使用した教材" %>
-        <%= f.text_area :content %>
+        <%= f.label :material, "使用した教材" %>
+        <%= f.text_area :material %>
       </div>
+      <div class="form_input">
+            <%= f.label :category_id %>
+            <%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => "カテゴリを選択してください" %>
+        </div>
       <div class="form-group">
         <%= f.submit "投稿する", class: "btn btn-primary" %>
       </div>
