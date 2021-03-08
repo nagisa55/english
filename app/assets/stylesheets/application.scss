@@ -17,8 +17,116 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/*リセットCSS*/
+
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+/*リセットCSS終わり*/
+
+
 html, body{
-  height: 100%;
+  height: 100% !important;
+  margin: 0;
   background-color: #f8f9fa;
 }
 
@@ -33,9 +141,12 @@ main{
 
 header{
   background-color: white;
+  height: 5%;
 }
 .header-menu{
   display: flex;
+  position: relative;
+  padding: 10px;
   a{
     text-decoration: none !important;
     color: black;
@@ -52,6 +163,8 @@ header{
     margin: 0 10px;
   }
 }
+
+
 
 .icon{
   border-radius: 50%;
@@ -111,50 +224,7 @@ h2{
     height: 100px;
   }
 
-  table{
-    width: 100%;
-    border-collapse: collapse;
 
-    tr{
-      border-bottom: solid 2px white;
-    }
-
-    tr:last-child{
-      border-bottom: none;
-    }
-
-    th{
-      position: relative;
-      text-align: left;
-      width: 25%;
-      background-color: #52c2d0;
-      color: white;
-      text-align: center;
-      padding: 10px 0;
-    }
-
-    th:after{
-      display: block;
-      content: "";
-      width: 0px;
-      height: 0px;
-      position: absolute;
-      top:calc(50% - 10px);
-      right:-10px;
-      border-left: 10px solid #52c2d0;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-    }
-
-    td{
-      text-align: left;
-      width: 90%;
-      text-align: center;
-      background-color: #eee;
-      padding: 10px 0;
-    }
-
-  }
 }
 
 /*ページネーション自体のデザイン*/
@@ -246,8 +316,6 @@ h2{
   color: #474747;
   border-left: double 7px #4ec4d3;
   border-right: double 7px #4ec4d3;
-  height: 100%;
-
     &-name{
       display: inline;
     }
@@ -283,6 +351,26 @@ h2{
       width:30%;
     }
   }
+}
+
+.user_profile{
+  margin: 0 auto;
+  &-top{
+  }
+  .name{
+    font-weight: 600;
+    font-size: 20px;
+    display: inline-block;
+  }
+  h3, h4{
+    font-size: 12px;
+  }
+}
+
+h4{
+  margin-left: 30px;
+  border-left: 3px solid #222;
+  padding-left: 10px;
 }
 
 footer{

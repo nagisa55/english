@@ -6,54 +6,57 @@
 <main>
 <section class="post-all">
   <p class="post-all-title">カテゴリーから探す</p>
-  <%= link_to( image_tag("img.png"), controller: "posts", action: "index", category_id: 1) do %>
-  <% end %>
+    <div><%= link_to "リスニング", categories_path, category_id: "category_listening" %></div>
+    <div><%= link_to "リーディング", "#" %></div>
+    <div><%= link_to "スピーキング", "#" %></div>
+    <div><%= link_to "ライティング", "#" %></div>
+    <p>リスニング</p>
 </section>
-  <section class="post-all">
-    <p class="post-all-title">新着投稿一覧</p>
-      <article>
-        <% if @posts.present? %>
-          <% @posts.first(3). each do |post| %>
-            <div class="post-all-division">
-              <%=link_to user_path(post.user), class: "link-style" do %>
-                <div class="post-all-division-user">
-                  <%= image_tag post.user.icon.url, class: "icon", :size => "30x30" %>
-                  <p><%= post.user.name %>さんの投稿</p>
-                  <span><%= l post.user.created_at %></span>
-                </div>
-              <% end %>
-              <%= link_to post_path(post), class: "link-style" do %>
-                <div class="post-title">
-                  <p><%= post.title %></p>
-                  <span class="post-category"><%= post.category %></span>
-                </div>
-                <div class="post-info-content">
-                  <%= post.content %>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
+<section class="post-all">
+  <p class="post-all-title">新着投稿一覧</p>
+    <article>
+      <% if @posts.present? %>
+        <% @posts.first(3). each do |post| %>
+          <div class="post-all-division">
+            <%=link_to user_path(post.user), class: "link-style" do %>
+              <div class="post-all-division-user">
+                <%= image_tag post.user.icon.url, class: "icon", :size => "30x30" %>
+                <p><%= post.user.name %>さんの投稿</p>
+                <span><%= l post.user.created_at %></span>
+              </div>
+            <% end %>
+            <%= link_to post_path(post), class: "link-style" do %>
+              <div class="post-title">
+                <p><%= post.title %></p>
+
+              </div>
+              <div class="post-info-content">
+                <%= post.content %>
+              </div>
+            <% end %>
+          </div>
         <% end %>
-      </article>
-      <div class= "post-all-view">
-        <%=link_to "すべて投稿を見る", posts_path %><i class="fa fa-angle-right" aria-hidden="true"></i>
-      </div>
-  </section>
-  <section class="user-all">
-    <p class="post-all-title">投稿数が多いユーザー</p>
-    <div class="user-all-info">
-      <% @users.first(4).each do |user| %>
-        <div class=user-all-info-division>
-          <%=link_to user_path(user), class: "link-style" do %>
-            <%= image_tag user.icon.url, class: "icon", :size => "100x100" %>
-            <div>
-              <%= user.name %>
-            </div>
-          <% end %>
-        </div>
       <% end %>
+    </article>
+    <div class= "post-all-view">
+      <%=link_to "すべての投稿を見る", posts_path %><i class="fa fa-angle-right" aria-hidden="true"></i>
     </div>
-  </section>
+</section>
+<section class="user-all">
+  <p class="post-all-title">投稿数が多いユーザー</p>
+  <div class="user-all-info">
+    <% @users.first(4).each do |user| %>
+      <div class=user-all-info-division>
+        <%=link_to user_path(user), class: "link-style" do %>
+          <%= image_tag user.icon.url, class: "icon", :size => "100x100" %>
+          <div>
+            <%= user.name %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>
   <section class="user-all">
     <p class="post-all-title">お気に入り数が多い投稿</p>
     <div class="user-all-info">
