@@ -2,7 +2,7 @@
 <% if @posts.present? %>
   <% @posts.each do |post| %>
     <div class="post-all-division">
-      <%=link_to user_path(post.user), class: "link-style" do %>
+      <%= link_to user_path(post.user), class: "link-style" do %>
         <div class="post-all-division-user">
           <%= image_tag post.user.icon.url, class: "icon", :size => "30x30" %>
           <p><%= post.user.name %>さんの投稿</p>

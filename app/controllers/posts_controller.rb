@@ -1,7 +1,11 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.where(id: params[:category_id]).order(created_at: :desc)
+    if params[:category_id]
+      @posts = Post.where(category_id: params[:category_id]).order(created_at: :desc)
+    else
+      @posts = Post.all
+    end
   end
 
   def new
@@ -31,6 +35,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:category, :title, :material, :content, :caegory_id)
+    params.require(:post).permit(:category, :title, :material, :content, :category_id)
   end
 end
