@@ -1,11 +1,17 @@
-<section class="user_profile">
-  <div class="user_profile-top">
-    <% if @user.icon? %>
-      <%= image_tag @user.icon.url, class: "icon", :size => "100x100" %>
-    <% end %>
-    <p class="name"><%= @user.name %>さんのページ</p>
+<section class="user-profile">
+  <div class="user-profile-main">
+    <div class="user-profile-top">
+      <div>
+        <% if @user.icon? %>
+          <%= image_tag @user.icon.url, class: "icon", :size => "100x100" %>
+        <% end %>
+      </div>
+      <div class="name">
+        <%= @user.name %>さんのページ
+      </div>
+    </div>
     <nav class="navbar navbar-default">
-      <ul class="nav navbar-nav user_profile-menu">
+      <ul class="nav navbar-nav user-profile-menu justify-content-center">
         <li><%= link_to "TOP", "#" %>
         <li><%= link_to "投稿", posts_path %></li>
         <li><%= link_to "お気に入り", "#" %></li>
@@ -14,44 +20,53 @@
         <% end %>
       </ul>
     </nav>
-  </div>
-  <h3>プロフィール</h3>
-  <div class="user_profile-main">
-    <div>
-      <h4>自己紹介</h4>
-      <%= @user.profile %>
-    </div>
-    <div>
-      <h4>英語力がアップして良かったこと</h4>
-      <%= @user.good_point %>
-    </div>
-  </div>
-</section>
-<div>
-  <h4>投稿</h4>
-  <div>
-    <% @posts.first(3).each do |post| %>
-      <div class="post-all-division">
-        <%= link_to user_path(post.user), class: "link-style" do %>
-          <div class="post-all-division-user">
-            <%= image_tag post.user.icon.url, class: "icon", :size => "30x30" %>
-            <p><%= post.user.name %>さんの投稿</p>
-            <span><%= l post.user.created_at %></span>
+    <div class="user-profile-main-block">
+      <div class="user-profile-main-block-title">
+        <h3>プロフィール</h3>
+      </div>
+      <div class="user-profile-main-block-detail">
+        <div>
+          <h4>自己紹介</h4>
+          <div class="user-profile-main-block-detail-content">
+            <%= @user.profile %>
           </div>
-        <% end %>
-        <%= link_to post_path(post), class: "link-style" do %>
-          <div class="post-title">
-            <p><%= post.title %></p>
-
+        </div>
+        <div>
+          <h4>英語力がアップして良かったこと</h4>
+          <div class="user-profile-main-block-detail-content">
+            <%= @user.good_point %>
           </div>
-          <div class="post-info-content">
-            <%= post.content %>
+        </div>
+      </div>
+    </div>
+    <div class="user-profile-main-block">
+      <div class="user-profile-main-block-title">
+        <h3>投稿</h3>
+      </div>
+      <div class="user-profile-main-block-post">
+        <% @posts.first(3).each do |post| %>
+          <div class="post-all-division">
+            <%= link_to user_path(post.user), class: "link-style" do %>
+              <div class="post-all-division-user">
+                <%= image_tag post.user.icon.url, class: "icon", :size => "30x30" %>
+                <p><%= post.user.name %>さんの投稿</p>
+                <span><%= l post.user.created_at %></span>
+              </div>
+            <% end %>
+            <%= link_to post_path(post), class: "link-style" do %>
+              <div class="post-title">
+                <p><%= post.title %></p>
+              </div>
+              <div class="post-info-content">
+                <%= post.content %>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
-    <% end %>
+      <div class= "post-all-view">
+        <%=link_to "すべての投稿を見る", posts_path %><i class="fa fa-angle-right" aria-hidden="true"></i>
+      </div>
+    </div>
   </div>
-  <div class= "post-all-view">
-      <%=link_to "すべての投稿を見る", posts_path %><i class="fa fa-angle-right" aria-hidden="true"></i>
-  </div>
-</div>
+</section>
