@@ -353,10 +353,22 @@ h2{
   }
 }
 
+/*ユーザー詳細ページ*/
+
 .user_profile{
-  margin: 0 auto;
+  margin-top:30px;
   &-top{
+    border-bottom: 1px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
+
   }
+  &-menu{
+    display: inline-block;
+    a{
+      border-right: 1px solid #dee2e6;;
+    }
+  }
+
   .name{
     font-weight: 600;
     font-size: 20px;
