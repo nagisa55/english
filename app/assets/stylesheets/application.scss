@@ -141,12 +141,12 @@ main{
 
 header{
   background-color: white;
-  height: 5%;
+  height: 8%;
 }
 .header-menu{
   display: flex;
   position: relative;
-  padding: 10px;
+  padding: 25px 10px;
   a{
     text-decoration: none !important;
     color: black;
@@ -353,24 +353,75 @@ h2{
   }
 }
 
-.user_profile{
-  margin: 0 auto;
+/*ユーザー詳細ページ*/
+
+.user-profile{
+  padding-top:30px;
+  border-bottom: 1px solid #dee2e6;
+  border-top: 1px solid #dee2e6;
   &-top{
+    display: flex;
+    align-items: center;
+    .name{
+      margin-left: 20px;
+
+    }
   }
+  &-main{
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    &-block{
+      border-bottom: 1px solid #dee2e6;
+      &-post{
+        margin-top: 30px;
+      }
+      &-title{
+        background-color: #f8f9fa;
+        font-size: 12px;
+        padding: 10px;
+        border-left: 1px solid #dee2e6;
+        margin-top: 20px;
+      }
+      &-detail{
+        margin-top: 30px;
+        h4{
+          font-size: 15px;
+          margin-left: 30px;
+          border-left: 3px solid #222;
+          padding-left: 10px;
+        }
+        &-content{
+          padding-left: 45px;
+          width:70%;
+          height: 150px;
+          font-size: 13px;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+  &-menu{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+    width: 800px;
+    margin: 0 auto;
+    align-items: center;
+    a{
+      border-right: 1px solid #dee2e6;
+      margin: 0 auto;
+    }
+
+  }
+
   .name{
     font-weight: 600;
     font-size: 20px;
     display: inline-block;
   }
-  h3, h4{
-    font-size: 12px;
-  }
-}
 
-h4{
-  margin-left: 30px;
-  border-left: 3px solid #222;
-  padding-left: 10px;
 }
 
 footer{
