@@ -1,27 +1,27 @@
-<h2>新規投稿</h2>
-<div class="row">
-  <div class="col-md-6 mx-auto">
+<div class="form">
+  <div class="form-details">
 
+      <div class="user-profile-main-block-title">
+        <h3>勉強方法を投稿する</h3>
+      </div>
+      <div class="form-details-post">
       <%= form_with(model:@post, local:true) do |f| %>
-      <div class="form-group">
-        <%= f.label :title, "タイトル" %>
-        <%= f.text_field :title %>
-      </div>
-      <div class="form-group">
-        <%= f.label :content, "勉強方法" %>
-        <%= f.text_area :content %>
-      </div>
-      <div class="form-group">
-        <%= f.label :material, "使用した教材" %>
-        <%= f.text_area :material %>
-      </div>
-      <div class="form_input">
-            <%= f.label :category_id %>
-            <%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => "カテゴリを選択してください" %>
+        <div class="form-group">
+          <%= f.label :title, "タイトル" %>
+          <%= f.text_field :title %>
         </div>
-      <div class="form-group">
-        <%= f.submit "投稿する", class: "btn btn-primary" %>
-      </div>
-    <% end %>
+        <div class="form-group">
+          <%= f.label :category_id, "カテゴリー", class: "category"  %>
+          <%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => "カテゴリを選択してください" %>
+          </div>
+        <div class="form-group">
+          <%= f.label :content, "勉強方法" %>
+          <%= f.text_area :content %>
+        </div>
+        <div class="post">
+          <%= f.submit "投稿する", class: "btn btn-primary w-30" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<div>
+</div>

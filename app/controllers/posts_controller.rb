@@ -2,10 +2,13 @@ class PostsController < ApplicationController
 
   def index
     if params[:category_id]
+      @user = User.find(params[:user_id])
       @posts = Post.where(category_id: params[:category_id]).order(created_at: :desc)
-
+    elsif params[:user_id]
+      @user = User.find(params[:user_id])
+      @posts = Post.where(user_id: params[:user_id]).order(created_at: :desc)
     else
-      @posts = Post.all.order(created_at: :desc)
+      @posts = Post.all
     end
   end
 
@@ -36,6 +39,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:category, :title, :material, :content, :category_id)
+    params.require(:post).permit(:category, :title, :content, :category_id)
   end
 end

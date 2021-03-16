@@ -1,3 +1,29 @@
+<section class="user-profile">
+  <div class="user-profile-main">
+    <div class="user-profile-top">
+      <div>
+        <% if @user.icon? %>
+          <%= image_tag @user.icon.url, class: "icon", :size => "100x100" %>
+        <% end %>
+      </div>
+      <div class="name">
+        <%= @user.name %>さんのページ
+      </div>
+    </div>
+    <nav class="navbar navbar-default">
+      <ul class="nav navbar-nav user-profile-menu justify-content-center">
+        <li><%= link_to "TOP", "#" %>
+        <li><%= link_to "投稿", posts_path %></li>
+        <li><%= link_to "お気に入り", "#" %></li>
+        <% if @user == current_user %>
+          <li><%= link_to "設定", edit_user_path(current_user) %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+
 <h2>新着投稿一覧</h2>
 <% if @posts.present? %>
   <% @posts.each do |post| %>

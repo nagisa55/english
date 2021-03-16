@@ -1,27 +1,22 @@
-<div class=" container post-detail">
-  <div class="row">
-    <div class="col-md-2">
+<section class="post-all">
+<div class="post-all-division">
       <%= link_to user_path(@user), class: "link-style" do %>
         <%= image_tag @user.icon.url, class: "icon", :size => "100x100" %>
-        <p>投稿者：<%= @user.name %></p>
+        <p class="post-all-division-user"> 投稿者：<%= @user.name %></p>
       <% end %>
     </div>
-    <div class="col-md-10">
       <div>
         <div class="post-title">
           <%= @post.title %>
         </div>
         <div>
-          <span class="post-category"><%= @post.category %></span>
           <span><%= l @user.created_at %></span>
           <!--お気に入り機能-->
           <%= render "favorites/favorite", post: @post %>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="post-detail-content">
+  <div class="post-info-content">
     <%= @post.content %>
   </div>
   <%= @post.material %>
 </div>
+</section>
