@@ -1,28 +1,56 @@
-<article>
-  <div>
-    <div>
-      <%= link_to user_path(@user), class: "link-style" do %>
-        <%= image_tag @user.icon.url, class: "icon", :size => "100x100" %>
-      <% end %>
+<div class="post-show">
+  <article>
+    <div class="post">
+      <div class="post-user">
+        <div class="post-user-icon">
+          <%= link_to user_path(@user), class: "link-style" do %>
+            <%= image_tag @user.icon.url, class: "icon", :size => "40x40" %>
+          <% end %>
+        </div>
+        <p class="post-user-name"><%= @user.name %>さんの投稿</p>
+      </div>
+      <div class="post-content">
+        <p class="post-content-title">
+          <%= @post.title %>
+        </p>
+        <span>
+          <%= render "favorites/favorite", post: @post %>
+        </span>
+        <div class="post-content-body">
+          <%= @post.content %>
+        </div>
+      </div>
     </div>
-    <p class="post-all-division-user"> 投稿者：<%= @user.name %></p>
-  </div>
+  </article>
   <div>
-    <p class="post-title">
-      <%= @post.title %>
-    </p>
-    <span>
-      <%= render "favorites/favorite", post: @post %>
-    </span>
-    <div class="post-info-content">
-      <%= @post.content %>
-    </div>
+    <% @comments.each do |comment| %>
+      <%= comment.user.name %>
+      <%= comment.content %>
+    <% end %>
   </div>
-</article>
-<div>
-  <p><%= ＠comments_count %>件のコメント</p>
-  <% @comments.each do |comment| %>
-    <%= comment.user.name %>
-    <%= comment.content %>
-  <% end %>
+  <div class="comment">
+    <%= form_with(model:[@post, @comment], local: true) do |f| %>
+      <%= f.text_area :content, :placeholder => "コメントを入力"  %>
+      <%= f.submit 'コメントする' %>
+    <% end %>
+  </div>
+  <aside>
+    <div class="post-others">
+    <p class="post-user-name"><%= @user.name %>さんの他の投稿</p>
+      <div class="post-others-each">
+        <div>
+          <% @posts.first(5).each do |post| %>
+              <%= link_to post_path(post), class: "link-style" do %>
+                <div class="post-title">
+                  <p><%= post.title %></p>
+                </div>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="back-button">
+  <%= link_to "戻る", user_path(@post.user_id), class: "link-style" %>
 </div>

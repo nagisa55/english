@@ -29,8 +29,9 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    @posts = @user.posts.all.order(created_at: :desc)
     @comments = @post.comments
-    ＠comments_count = @comments.count
+    @comment = current_user.comments.new
   end
 
   def destroy

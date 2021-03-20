@@ -50,7 +50,6 @@
                   <div class="post-all-division-user">
                     <%= image_tag post.user.icon.url, class: "icon", :size => "30x30" %>
                     <p><%= post.user.name %>さんの投稿</p>
-                    <span><%= l post.user.created_at %></span>
                   </div>
                 <% end %>
                 <%= link_to post_path(post), class: "link-style" do %>
@@ -65,7 +64,7 @@
             <% end %>
           </div>
           <div class= "post-all-view">
-            <%=link_to "すべての投稿を見る", posts_path %><i class="fa fa-angle-right" aria-hidden="true"></i>
+            <%=link_to "すべての投稿を見る", posts_path(@user) %><i class="fa fa-angle-right" aria-hidden="true"></i>
           </div>
         </div>
       </div>

@@ -271,6 +271,78 @@ h2{
   border-radius: 15px;    /*角を丸くする*/
 }
 
+
+/*投稿*/
+.post-show{
+  background-color: white;
+  margin: 0 auto;
+  width: 95%;
+  height: 100%;
+  .post{
+    margin-top: 30px;
+    padding: 30px;
+    &-user{
+      display: flex;
+      align-items: center;
+      border: 1px solid #dee2e6;
+      padding: 0 20px;
+      &-icon{
+        padding-top: 20px;
+      }
+      &-name{
+        font-size: 12px;
+        margin-left: 15px;
+      }
+    }
+    &-content{
+      border:1px solid #dee2e6;
+      &-title{
+        font-size: 20px;
+        padding: 20px;
+        font-weight: 600;
+      }
+      &-body{
+        height: 100vh;
+        font-size: 14px;
+        margin-top: 20px;
+        text-align: center;
+      }
+    }
+  }
+  aside{
+    margin: 30px;
+    border: 1px solid #dee2e6;
+    width: 80%;
+    .post-others{
+      font-weight: 500;
+      padding: 10px;
+      background-color: #faf8f5;
+      &-each{
+        border: 1px solid #dee2e6;
+        background-color: white;
+        margin: 5px 0;
+      }
+    }
+  }
+
+}
+
+/*コメント*/
+.comment{
+  margin: 0 30px;
+  width: 80%;
+  textarea{
+    width: 100%;
+    height: 80px;
+  }
+}
+
+.back-button{
+  text-align: center;
+  margin: 20px 0;
+}
+
+
 .post-all{
   background-color: white;
   margin: 0 auto;
@@ -455,6 +527,7 @@ h2{
     }
     .tab.active {
       border: none;
+      background-color: #f90;
     }
   }
 
@@ -466,6 +539,9 @@ h2{
     display: block;
   }
 }
+
+
+
 
 footer{
   background-color: #343a40;
