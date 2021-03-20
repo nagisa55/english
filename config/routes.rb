@@ -8,7 +8,10 @@ Rails.application.routes.draw do
 
   get "signup", to: "users#new"
   resources :users
-  resources :posts
+  resources :posts  do
+    resources :comments, only: [:create, :destroy]
+  end
+
   resources :favorites, only: [:create, :destroy]
   resources :categories
 end

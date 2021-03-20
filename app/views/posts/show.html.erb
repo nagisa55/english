@@ -1,22 +1,58 @@
-<section class="post-all">
-<div class="post-all-division">
-      <%= link_to user_path(@user), class: "link-style" do %>
-        <%= image_tag @user.icon.url, class: "icon", :size => "100x100" %>
-        <p class="post-all-division-user"> 投稿者：<%= @user.name %></p>
-      <% end %>
-    </div>
-      <div>
-        <div class="post-title">
+<div class="post-show">
+  <article>
+    <div class="post">
+      <div class="post-user">
+        <div class="post-user-icon">
+          <%= link_to user_path(@user), class: "link-style" do %>
+            <%= image_tag @user.icon.url, class: "icon", :size => "40x40" %>
+          <% end %>
+        </div>
+        <p class="post-user-name"><%= @user.name %>さんの投稿</p>
+      </div>
+      <div class="post-content">
+        <p class="post-content-title">
           <%= @post.title %>
-        </div>
-        <div>
-          <span><%= l @user.created_at %></span>
-          <!--お気に入り機能-->
+          <span class="date">(投稿日:<%= @post.created_at.strftime('%Y/%m/%d') %>)</span>
+        </p>
+        <span>
           <%= render "favorites/favorite", post: @post %>
+        </span>
+        <div class="post-content-body">
+          <%= @post.content %>
         </div>
-  <div class="post-info-content">
-    <%= @post.content %>
+      </div>
+    </div>
+  </article>
+  <div>
+    <% @comments.each do |comment| %>
+      <%= comment.user.name %>
+      <%= comment.content %>
+    <% end %>
   </div>
-  <%= @post.material %>
+  <div class="comment">
+    <%= form_with(model:[@post, @comment], local: true) do |f| %>
+      <%= f.text_area :content, :placeholder => "コメントを入力"  %>
+      <%= f.submit 'コメントする' %>
+    <% end %>
+  </div>
+  <aside>
+    <div class="post-others">
+      <p class="post-user-name"><%= @user.name %>さんの他の投稿</p>
+      <div class="post-others-each">
+        <% @posts.first(5).each do |post| %>
+          <%= link_to post_path(post), class: "link-style" do %>
+            <div class="post-title">
+              <p><%= post.title %></p>
+              <span class="date">(<%= post.created_at.strftime('%Y/%m/%d') %>)</span>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </aside>
 </div>
-</section>
+<div class="back-button">
+  <%= link_to user_path(@post.user_id), class: "link-style" do %>
+    <p><%= @post.user.name %>さんのページへ戻る</p>
+  <% end %>
+</div>

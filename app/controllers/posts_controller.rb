@@ -5,7 +5,7 @@ class PostsController < ApplicationController
       @user = User.find(params[:user_id])
       @posts = Post.where(category_id: params[:category_id]).order(created_at: :desc)
     elsif params[:user_id]
-      @user = User.find(params[:user_id])
+      @user = User.find(id: params[:user_id])
       @posts = Post.where(user_id: params[:user_id]).order(created_at: :desc)
     else
       @posts = Post.all
@@ -29,6 +29,9 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    @posts = @user.posts.all.order(created_at: :desc)
+    @comments = @post.comments
+    @comment = current_user.comments.new
   end
 
   def destroy
