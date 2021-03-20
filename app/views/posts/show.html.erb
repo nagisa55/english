@@ -12,6 +12,7 @@
       <div class="post-content">
         <p class="post-content-title">
           <%= @post.title %>
+          <span class="date">(投稿日:<%= @post.created_at.strftime('%Y/%m/%d') %>)</span>
         </p>
         <span>
           <%= render "favorites/favorite", post: @post %>
@@ -36,21 +37,22 @@
   </div>
   <aside>
     <div class="post-others">
-    <p class="post-user-name"><%= @user.name %>さんの他の投稿</p>
+      <p class="post-user-name"><%= @user.name %>さんの他の投稿</p>
       <div class="post-others-each">
-        <div>
-          <% @posts.first(5).each do |post| %>
-              <%= link_to post_path(post), class: "link-style" do %>
-                <div class="post-title">
-                  <p><%= post.title %></p>
-                </div>
-              <% end %>
+        <% @posts.first(5).each do |post| %>
+          <%= link_to post_path(post), class: "link-style" do %>
+            <div class="post-title">
+              <p><%= post.title %></p>
+              <span class="date">(<%= post.created_at.strftime('%Y/%m/%d') %>)</span>
+            </div>
           <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
   </aside>
 </div>
 <div class="back-button">
-  <%= link_to "戻る", user_path(@post.user_id), class: "link-style" %>
+  <%= link_to user_path(@post.user_id), class: "link-style" do %>
+    <p><%= @post.user.name %>さんのページへ戻る</p>
+  <% end %>
 </div>

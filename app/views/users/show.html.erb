@@ -13,7 +13,7 @@
     <nav class="navbar navbar-default">
       <ul class="nav navbar-nav user-profile-menu tab-area justify-content-center", id="tab">
         <li class="tab active">TOP</li>
-        <li class="tab">投稿</li>
+        <li class="tab">投稿一覧</li>
         <li class="tab">お気に入り</li>
         <% if @user == current_user %>
           <li class="tab"><%= link_to "設定", edit_user_path(current_user) %></li>
@@ -46,20 +46,24 @@
           <div class="user-profile-main-block-post">
             <% @posts.first(3).each do |post| %>
               <div class="post-all-division">
-                <%= link_to user_path(post.user), class: "link-style" do %>
-                  <div class="post-all-division-user">
-                    <%= image_tag post.user.icon.url, class: "icon", :size => "30x30" %>
-                    <p><%= post.user.name %>さんの投稿</p>
-                  </div>
-                <% end %>
-                <%= link_to post_path(post), class: "link-style" do %>
-                  <div class="post-title">
+                <div class="post-title">
+                  <%= link_to post_path(post) do %>
                     <p><%= post.title %></p>
+                  <% end %>
+                  <span class="date">(<%= post.created_at.strftime('%Y/%m/%d') %>)</span>
+                </div>
+                <div class="post-content">
+                  <p class="post-content-title"><%= post.title %></p>
+                  <div class="post-body">
+                    <%= post.content.truncate(40) %>
+                    <%= link_to "続きを読む", post_path(post) %>
                   </div>
-                  <div class="post-info-content">
-                    <%= post.content %>
-                  </div>
-                <% end %>
+                  <p class="comment-btn">
+                    <%= link_to post_path(post) do %>
+                      <i class="far fa-comment-dots">コメント<>件</i>
+                    <% end %>
+                  </p>
+                </div>
               </div>
             <% end %>
           </div>
@@ -68,24 +72,27 @@
           </div>
         </div>
       </div>
-      <div class="content">
+      <div class="content post-all">
         <% @posts.each do |post| %>
           <div class="post-all-division">
-            <%= link_to user_path(post.user), class: "link-style" do %>
-              <div class="post-all-division-user">
-                <%= image_tag post.user.icon.url, class: "icon", :size => "30x30" %>
-                <p><%= post.user.name %>さんの投稿</p>
-                <span><%= l post.user.created_at %></span>
-              </div>
-            <% end %>
-            <%= link_to post_path(post), class: "link-style" do %>
-              <div class="post-title">
+            <div class="post-title">
+              <%= link_to post_path(post) do %>
                 <p><%= post.title %></p>
+              <% end %>
+              <span class="date">(投稿:<%= post.created_at.strftime('%Y/%m/%d') %>)</span>
+            </div>
+            <div class="post-content">
+              <p class="post-content-title"><%= post.title %></p>
+              <div class="post-body">
+                <%= post.content.truncate(80) %>
+                <%= link_to "続きを読む", post_path(post) %>
               </div>
-              <div class="post-info-content">
-                <%= post.content %>
-              </div>
-            <% end %>
+              <p class="comment-btn">
+                <%= link_to post_path(post) do %>
+                  <i class="far fa-comment-dots">コメント<>件</i>
+                <% end %>
+              </p>
+            </div>
           </div>
         <% end %>
       </div>

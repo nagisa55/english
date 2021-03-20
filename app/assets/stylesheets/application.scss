@@ -272,42 +272,15 @@ h2{
 }
 
 
-/*投稿*/
+/*投稿詳細ページ*/
 .post-show{
   background-color: white;
   margin: 0 auto;
   width: 95%;
   height: 100%;
-  .post{
-    margin-top: 30px;
-    padding: 30px;
-    &-user{
-      display: flex;
-      align-items: center;
-      border: 1px solid #dee2e6;
-      padding: 0 20px;
-      &-icon{
-        padding-top: 20px;
-      }
-      &-name{
-        font-size: 12px;
-        margin-left: 15px;
-      }
-    }
-    &-content{
-      border:1px solid #dee2e6;
-      &-title{
-        font-size: 20px;
-        padding: 20px;
-        font-weight: 600;
-      }
-      &-body{
-        height: 100vh;
-        font-size: 14px;
-        margin-top: 20px;
-        text-align: center;
-      }
-    }
+  .post-content-title{
+  margin-top: 20px;
+  margin-left: 20px;
   }
   aside{
     margin: 30px;
@@ -319,14 +292,54 @@ h2{
       background-color: #faf8f5;
       &-each{
         border: 1px solid #dee2e6;
-        background-color: white;
         margin: 5px 0;
+        .post-title{
+          background-color: white;
+        }
       }
     }
   }
-
+}
+.post{
+  margin-top: 30px;
+  padding: 30px;
+  &-user{
+    display: flex;
+    align-items: center;
+    border: 1px solid #dee2e6;
+    padding: 0 20px;
+    &-icon{
+      padding-top: 20px;
+    }
+    &-name{
+      font-size: 12px;
+      margin-left: 15px;
+    }
+  }
+  &-content{
+    border:1px solid #dee2e6;
+    &-title{
+      font-size: 25px;
+      font-weight: 500;
+    }
+    &-body{
+      height: auto;
+      font-size: 14px;
+      margin-top: 20px;
+      text-align: center;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  }
 }
 
+/*日付*/
+.date{
+  color: #6c757d;
+  font-weight: 400;
+  margin-left: 5px;
+  font-size: 12px;
+}
 /*コメント*/
 .comment{
   margin: 0 30px;
@@ -337,24 +350,44 @@ h2{
   }
 }
 
+.comment-btn{
+  border: 1px solid #fea3a3;
+  width:18%;
+  padding: 10px;
+  a{
+    color: #fea3a3;
+    font-size: 14px;
+    text-decoration: none;
+  }
+}
+
 .back-button{
   text-align: center;
   margin: 20px 0;
 }
 
+/*新規投稿ページ*/
+.post-create{
+  margin-top:30px;
+  &-form{
+    margin: 0 auto;
+    border: 1px solid #dee2e6;
+    background-color: white;
+    width: 90%;
+    padding: 20px;
+    &-details{
+      width: 90%;
+    }
+  }
+}
+
+/*ユーザ詳細の投稿一覧ページ*/
 
 .post-all{
   background-color: white;
   margin: 0 auto;
-  width:70%;
+  width: 100%;
   padding: 0 20px;
-  &-title{
-    font-size: 15px;
-    font-weight: 500;
-    padding-top: 30px;
-    padding-left: 5px;
-  }
-
   &-view{
     color: #6c757d;
     border-bottom: 1px solid #dee2e6;
@@ -363,32 +396,24 @@ h2{
     flex-direction: row-reverse;
     margin-bottom: 20px;
   }
-
   &-division{
     margin-bottom: 30px;
     border: 1px solid rgba(34, 34, 34, .125);
     border-radius: .15rem;
-    &-user{
-      height: 40px;
-      display: flex;
-      background-color: #faf8f5!important;
-      border-bottom: 1px solid rgba(34, 34, 34, .125);
-      padding: 5px;
-
-      p{
+    .post-content{
+      padding: 20px;
+      &-title{
         display: inline-block;
-        margin-left: 5px;
+        border-bottom: 1px solid #dee2e6;
+      }
+      .post-body{
+        text-align: left;
+        margin-top: 10px;
+        padding-bottom: 30px;
+        font-size: 12px;
       }
     }
   }
-
-  .post-info{
-    &-content{
-      margin-top: 10px;
-      padding: 10px;
-    }
-  }
-
 }
 
 .post-category{
@@ -402,9 +427,9 @@ h2{
 .post-title{
   display: flex;
   font-size: 15px;
-  color: #565656;
   border-bottom: 1px solid #dee2e6;
-  padding: 5px;
+  padding: 15px;
+  background-color: #faf8f5;
     p{
       font-weight: 600;
     }
@@ -499,30 +524,24 @@ h2{
         }
         &-content{
           padding-left: 45px;
-          width:70%;
-          height: 150px;
+          width:80%;
+          height: auto;
           font-size: 13px;
           margin-top: 20px;
+          margin-bottom: 50px;
         }
       }
     }
   }
-
-
-
-
   .tab-area {
     display: flex;
-    justify-content: center;
     cursor: pointer;
     width: 800px;
     margin: 0 auto;
-    align-items: center;
     .tab {
       width: 300px;
-      line-height: 30px;
+      line-height: 50px;
       text-align: center;
-      border-right: 1px solid #dee2e6;
       border-left: 1px solid #dee2e6;
     }
     .tab.active {
@@ -530,7 +549,6 @@ h2{
       background-color: #f90;
     }
   }
-
   .content {
     display: none;
   }
