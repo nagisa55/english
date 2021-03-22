@@ -139,6 +139,22 @@ main{
   color: #565656;
 }
 
+
+h2{
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+  border-bottom: 1px solid #93c9ff;
+  display: inline-block;
+}
+
+.icon{
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+/*ヘッダー*/
+
 header{
   background-color: white;
   height: 8%;
@@ -164,51 +180,7 @@ header{
   }
 }
 
-
-
-.icon{
-  border-radius: 50%;
-  margin-bottom: 20px;
-}
-
-.top-page{
-  position: relative;
-  height: 70vh;
-  background-image: image-url('topimage.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin-bottom: 40px;
-
-  &-text{
-    position: absolute;
-    top: 30%;
-		left: 5%;
-		width: 400px;
-    margin: 2em auto;
-    padding: 1em;
-    background-color: rgba(238, 238, 238, 0.65);
-		border: 1px solid #ccc; /* 枠線 */
-		h1{
-      color: black;
-      font-size: 60px;
-		}
-
-	}
-}
-
-h2{
-  text-align: center;
-  font-weight: 500;
-  font-size: 20px;
-  border-bottom: 1px solid #93c9ff;
-  display: inline-block;
-}
-
-.navbar-nav{
-  cursor: pointer;
-  font-size: medium;
-}
-
+/*フォーム*/
 .form{
   margin-top: 30px;
   &-details{
@@ -243,16 +215,79 @@ h2{
   }
 }
 
+/*トップページ*/
+.top-page{
+  position: relative;
+  height: 70vh;
+  background-image: image-url('topimage.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 40px;
 
-.user_info{
-  margin-top: 20px;
-
-  &_details{
-    height: 100px;
-  }
-
-
+  &-text{
+    position: absolute;
+    top: 30%;
+		left: 5%;
+		width: 400px;
+    margin: 2em auto;
+    padding: 1em;
+    background-color: rgba(238, 238, 238, 0.65);
+		border: 1px solid #ccc; /* 枠線 */
+		h1{
+      color: black;
+      font-size: 60px;
+		}
+	}
 }
+.menu-block{
+  background-color: white;
+  margin: 0 auto;
+  width:70%;
+  padding: 20px;
+  margin-top: 30px;
+  &-title{
+    font-weight: 500;
+  }
+}
+.category-menu{
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  li{
+    display: inline-block;
+  }
+  .reading{
+    color: green;
+  }
+  .listenig{
+    color: red;
+  }
+  .writing{
+    color: orange;
+  }
+  .speaking{
+    color:blue;
+  }
+  p{
+    padding: 15px 0;
+    font-weight: 500;
+  }
+}
+
+.post-all-division-top{
+  background-color: #faf8f5;
+  .icon{
+    margin-top: 8px;
+    margin-left: 10px;
+  }
+  &-user{
+    color: #6c757d;
+    font-size: 12px;
+    display: inline-block;
+  }
+}
+
 
 /*ページネーション自体のデザイン*/
 .pagination>li>a {

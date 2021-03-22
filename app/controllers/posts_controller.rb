@@ -2,11 +2,7 @@ class PostsController < ApplicationController
 
   def index
     if params[:category_id]
-      @user = User.find(params[:user_id])
       @posts = Post.where(category_id: params[:category_id]).order(created_at: :desc)
-    elsif params[:user_id]
-      @user = User.find(id: params[:user_id])
-      @posts = Post.where(user_id: params[:user_id]).order(created_at: :desc)
     else
       @posts = Post.all
     end

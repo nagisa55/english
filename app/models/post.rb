@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   validates :user_id, presence: true
   validates :title, presence: true, length: { maximum:50 }
   validates :content, presence: true, length: { maximum:500 }
+  validates :category_id, presence: true
   has_one :category
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
