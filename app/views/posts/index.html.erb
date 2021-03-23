@@ -1,49 +1,36 @@
-<section class="user-profile">
-  <div class="user-profile-main">
-    <div class="user-profile-top">
-      <div>
-        <% if @user.icon? %>
-          <%= image_tag @user.icon.url, class: "icon", :size => "100x100" %>
-        <% end %>
+<section class="menu-block">
+  <article>
+    <% if @posts.present? %>
+      <div class="user-profile-main-block">
+        <div class="user-profile-main-block-post">
+          <% @posts.each do |post| %>
+            <div class="post-all-division">
+              <div class="post-all-division-top">
+                <div>
+                  <%= image_tag post.user.icon.url, class: "icon", :size => "40x40"  %>
+                </div>
+                <div class="post-title">
+                  <div class="post-all-division-top-user">
+                    <%= link_to user_path(post.user), class: "link-style" do %>
+                      <%= post.user.name %>さんの投稿
+                      <span class="date">(投稿日:<%= post.created_at.strftime('%Y/%m/%d') %>)</span>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="post-content">
+                <p class="post-content-title"><%= post.title %></p>
+                <div class="post-body">
+                  <%= post.content.truncate(40) %>
+                  <%= link_to "続きを読む", post_path(post) %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
-      <div class="name">
-        <%= @user.name %>さんのページ
-      </div>
-    </div>
-    <nav class="navbar navbar-default">
-      <ul class="nav navbar-nav user-profile-menu justify-content-center">
-        <li><%= link_to "TOP", "#" %>
-        <li><%= link_to "投稿", posts_path %></li>
-        <li><%= link_to "お気に入り", "#" %></li>
-        <% if @user == current_user %>
-          <li><%= link_to "設定", edit_user_path(current_user) %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
+    <% end %>
+  </article>
 </section>
-
-
-<h2>新着投稿一覧</h2>
-<% if @posts.present? %>
-  <% @posts.each do |post| %>
-    <div class="post-all-division">
-      <%= link_to user_path(post.user), class: "link-style" do %>
-        <div class="post-all-division-user">
-          <%= image_tag post.user.icon.url, class: "icon", :size => "30x30" %>
-          <p><%= post.user.name %>さんの投稿</p>
-          <span><%= l post.user.created_at %></span>
-        </div>
-      <% end %>
-      <%= link_to post_path(post), class: "link-style" do %>
-        <div class="post-title">
-          <p><%= post.title %></p>
-
-        </div>
-        <div class="post-info-content">
-          <%= post.content %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-<% end %>
+<%= paginate @posts %>
+<%= link_to "戻る", "/" %>

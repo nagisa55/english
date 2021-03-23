@@ -24,13 +24,15 @@
     </div>
   </article>
   <div>
-    <% @comments.each do |comment| %>
-      <%= comment.user.name %>
-      <%= comment.content %>
+    <% if @comments.present? %>
+      <% @comments.each do |comment| %>
+        <%= comment.user.name %>
+        <%= comment.content %>
+      <% end %>
     <% end %>
   </div>
   <div class="comment">
-    <%= form_with(model:[@post, @comment], local: true) do |f| %>
+    <%= form_with(model: [@post, @comment], local: true) do |f| %>
       <%= f.text_area :content, :placeholder => "コメントを入力"  %>
       <%= f.submit 'コメントする' %>
     <% end %>
