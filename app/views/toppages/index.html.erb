@@ -74,12 +74,13 @@
 <section class="menu-block">
   <p class="menu-block-title">投稿数が多いユーザー</p>
   <div class="user-all-info">
-    <% @users.first(4).each do |user| %>
+    <% @ranking_users.each do |user| %>
       <div class=user-all-info-division>
         <%=link_to user_path(user), class: "link-style" do %>
           <%= image_tag user.icon.url, class: "icon", :size => "100x100" %>
           <div>
             <%= user.name %>
+            <%= user.posts.count %>
           </div>
         <% end %>
       </div>
