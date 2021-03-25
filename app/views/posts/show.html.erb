@@ -31,6 +31,7 @@
       <% end %>
     <% end %>
   </div>
+  <if >
   <div class="comment">
     <%= form_with(model: [@post, @comment], local: true) do |f| %>
       <%= f.text_area :content, :placeholder => "コメントを入力"  %>

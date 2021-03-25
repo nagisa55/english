@@ -1,8 +1,11 @@
 class PostsController < ApplicationController
+  before_action :require_logged_in
+
   def index
     if params[:category_id]
-      @posts = Post.where(category_id: params[:category_id]).order(created_at: :desc)
+      @posts = Post.preload(:user).where(category_id: params[:category_id]).order(created_at: :desc)
       @posts = @posts.page(params[:page]).per(5)
+      @category = Category.find(params[:category_id])
     else
       @posts = Post.all.order(created_at: :desc).page(params[:page]).per(5)
     end
@@ -17,7 +20,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to user_path(current_user)
-    else
+    elses
       render :new
     end
   end
