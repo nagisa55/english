@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
+  before_action :require_logged_in
+
   def index
     if params[:category_id]
-      @posts = Post.where(category_id: params[:category_id]).order(created_at: :desc)
+      @posts = Post.preload(:user).where(category_id: params[:category_id]).order(created_at: :desc)
       @posts = @posts.page(params[:page]).per(5)
       @category = Category.find(params[:category_id])
     else
