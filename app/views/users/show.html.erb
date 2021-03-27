@@ -60,7 +60,7 @@
                   </div>
                   <p class="comment-btn">
                     <%= link_to post_path(post) do %>
-                      <i class="far fa-comment-dots">コメント<>件</i>
+                      <i class="far fa-comment-dots">コメント<%= post.comments.count %>件</i>
                     <% end %>
                   </p>
                 </div>
@@ -68,7 +68,7 @@
             <% end %>
           </div>
           <div class= "post-all-view">
-            <%=link_to "すべての投稿を見る", posts_path(@user) %><i class="fa fa-angle-right" aria-hidden="true"></i>
+            <%=link_to "すべての投稿を見る", posts_path(user_id: @user) %><i class="fa fa-angle-right" aria-hidden="true"></i>
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@
               </div>
               <p class="comment-btn">
                 <%= link_to post_path(post) do %>
-                  <i class="far fa-comment-dots">コメント<>件</i>
+                  <i class="far fa-comment-dots">コメント<%= post.comments.count %>件</i>
                 <% end %>
               </p>
             </div>
