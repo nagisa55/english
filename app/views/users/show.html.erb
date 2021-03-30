@@ -60,7 +60,7 @@
                   </div>
                   <p class="comment-btn">
                     <%= link_to post_path(post) do %>
-                      <i class="far fa-comment-dots">コメント<>件</i>
+                      <i class="far fa-comment-dots">コメント<%= post.comments.count %>件</i>
                     <% end %>
                   </p>
                 </div>
@@ -68,7 +68,7 @@
             <% end %>
           </div>
           <div class= "post-all-view">
-            <%=link_to "すべての投稿を見る", posts_path(@user) %><i class="fa fa-angle-right" aria-hidden="true"></i>
+            <%=link_to "すべての投稿を見る", posts_path(user_id: @user) %><i class="fa fa-angle-right" aria-hidden="true"></i>
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@
               </div>
               <p class="comment-btn">
                 <%= link_to post_path(post) do %>
-                  <i class="far fa-comment-dots">コメント<>件</i>
+                  <i class="far fa-comment-dots">コメント<%= post.comments.count %>件</i>
                 <% end %>
               </p>
             </div>
@@ -97,7 +97,23 @@
         <% end %>
       </div>
       <div class="content">
-        お気にいいり
+        <p class="user-profile-main-block-title"><%= @user.name %>さんのお気に入り投稿一覧<p>
+        <div class="favorite">
+          <% if @favorites.present? %>
+            <% @favorites.each do |favorite| %>
+              <div class="post-all-division-top">
+                <%= link_to user_path(favorite.post.user) do %>
+                  <p><%= image_tag favorite.post.user.icon.url, class: "icon", :size => "50x50"%></p>
+                <% end %>
+                <%= link_to post_path(favorite.post), class: "link-style" do %>
+                  <p class="favorite-post-title"><%= favorite.post.title %></p>
+                <% end %>
+              </div>
+            <% end %>
+          <% else %>
+            <p>お気に入りした投稿はありません。<p>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

@@ -87,21 +87,19 @@
     <% end %>
   </div>
 </section>
-  <section class="menu-block">
-    <p class="menu-block-title">お気に入り数が多い投稿</p>
-    <div class="user-all-info">
+<section class="menu-block">
+  <p class="menu-block-title">お気に入り数が多い投稿</p>
+    <div class="post-others-each">
       <% @ranking_posts.each do |post| %>
-        <div class=user-all-info-division>
-          <%=link_to post_path(post), class: "link-style" do %>
-            <%= image_tag post.user.icon.url, class: "icon", :size => "100x100" %>
-            <div>
-              <%= post.title %>
-            </div>
-          <% end %>
-        </div>
+        <%= link_to post_path(post), class: "link-style" do %>
+          <div class="post-title">
+            <p><%= post.title %></p>
+            <%= post.favorites.count %>
+          </div>
+        <% end %>
       <% end %>
     </div>
-  </section>
+</section>
 </main>
 <aside>
   <div class="user-all">

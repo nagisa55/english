@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def require_logged_in
     unless logged_in?
-      flash[:danger] = "ログインしてください。"
+      flash.now[:danger] = "ログインしてください。"
       redirect_to login_path
     end
   end
