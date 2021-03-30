@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @comment.post
     else
-      render :create
+      redirect_to root_path
     end
   end
 
