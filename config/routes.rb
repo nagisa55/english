@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'categories/index'
   root to: "toppages#index"
+  post "/guest", to: "guest_sessions#create"
 
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
