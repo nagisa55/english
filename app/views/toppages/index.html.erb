@@ -2,6 +2,17 @@
   <div class="top-page-text">
     <h1>さあ、英語力伸ばさない？</h1>
   </div>
+
+<%= form_tag(root_path, :method => 'get') do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag '検索', :name => nil %>
+<% end %>
+
+<% if @feed_posts.present? %>
+  <% @feed_posts.each do |post| %>
+    <%= post.title %>
+  <% end %>
+<% end %>
 </div>
 <main>
 <section class="category menu-block">
@@ -110,3 +121,6 @@
     <% end %>
   </div>
 </aside>
+
+
+
