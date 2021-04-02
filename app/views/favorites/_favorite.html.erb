@@ -1,18 +1,17 @@
-<% if !current_user?(post.user) %>
-	<span class="like">
-		<% if post.like?(current_user) %>
-			<%= form_for(post.favorites.find_by(user_id: current_user.id), method: :delete, remote: true) do |f| %>
-				<%= button_tag(class: "btn btn-default btn-xs") do %>
-				<%= content_tag :span, "お気に入り解除", class: "glyphicon glyphicon-heart" %>
-				<% end %>
+<span class="like">
+	<% if post.like?(current_user) %>
+		<p class=favorite-btn>
+			<%=link_to post_favorite_path(post), method: :delete, remote: true do %>
+				<i class="fas fa-2x fa-thumbs-up"></i>
 			<% end %>
-		<% else %>
-			<%= form_for(post.favorites.build, remote: true) do |f| %>
-				<div><%= hidden_field_tag :post_id, post.id %></div>
-					<%= button_tag(class: "btn btn-default btn-xs") do %>
-						<%= content_tag :span, "お気に入り", class: "glyphicon glyphicon-heart-empty" %>
-					<% end %>
+			<%= post.favorites.count %>
+		</p>
+	<% else %>
+		<p class=favorite-btn>
+			<%=link_to post_favorites_path(post), method: :post, remote: true do %>
+				<i class="far fa-2x fa-thumbs-up"></i>
 			<% end %>
-		<% end %>
-	</span>
-<% end %>
+			<%= post.favorites.count %>
+		</p>
+	<% end %>
+</span>

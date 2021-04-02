@@ -400,6 +400,11 @@ header{
   }
 }
 
+.edit-post{
+  font-size: 13px;;
+  width:200px;
+  margin-left: auto;
+}
 /*日付*/
 .date{
   color: #6c757d;
@@ -667,6 +672,16 @@ header{
   }
 }
 
+/**/
+.favorite-btn, .fa-thumbs-up{
+  color: #fea3a3;
+  padding: 5px;
+}
+
+.favorite-btn{
+  width: 70px;
+  margin-left: auto;
+}
 
 /*戻るボタン*/
 .back-btn{
