@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_logged_in
+  before_action :require_logged_in, except: [:search]
 
   def index
     if params[:category_id]
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to user_path(current_user)
-    elses
+    else
       render :new
     end
   end
@@ -41,6 +41,12 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_back(fallback_location: root_path)
   end
+
+  def search
+    @posts = Post.search(params[:search])
+    @posts = @posts.page(params[:page]).per(5)
+  end
+
 
   private
 

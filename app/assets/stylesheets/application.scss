@@ -243,6 +243,33 @@ header{
 		}
 	}
 }
+
+/*検索フォーム*/
+.search{
+  width: 1000px;
+  position: absolute;
+  padding: 25px;
+  background-color: white;
+  top: 75%;
+  left: 15%;
+  display: flex;
+  align-items: center;
+  p{
+    font-weight: 500;
+  }
+  .hoge{
+    margin-left: 15px;
+    width: 700px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: 50px;
+  }
+  .btn{
+    height: 50px;
+  }
+}
+
 .menu-block{
   background-color: white;
   margin: 0 auto;
@@ -645,8 +672,6 @@ header{
 .back-btn{
   margin: 0 auto;
 }
-
-
 
 footer{
   background-color: #343a40;

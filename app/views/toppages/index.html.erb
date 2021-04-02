@@ -2,17 +2,13 @@
   <div class="top-page-text">
     <h1>さあ、英語力伸ばさない？</h1>
   </div>
-
-<%= form_tag(root_path, :method => 'get') do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag '検索', :name => nil %>
-<% end %>
-
-<% if @feed_posts.present? %>
-  <% @feed_posts.each do |post| %>
-    <%= post.title %>
-  <% end %>
-<% end %>
+  <div class="search">
+    <p>キーワードから探す</p>
+    <%= form_tag(search_posts_path, :method => 'get') do %>
+      <%= text_field_tag :search, params[:search], placeholder: "(例)TOEIC",  class: "hoge" %>
+      <%= button_tag '<i class="fas fa-search"></i>検索'.html_safe, :type => "submit", :class =>"btn btn-default btn-s-md" %>
+    <% end %>
+  </div>
 </div>
 <main>
 <section class="category menu-block">
