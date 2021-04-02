@@ -37,9 +37,22 @@ class PostsController < ApplicationController
     @comment = current_user.comments.new
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+      if @post.update(post_params)
+        redirect_to user_path(current_user)
+      else
+        render :edit
+      end
+  end
+
   def destroy
     @post.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_to root
   end
 
   def search
