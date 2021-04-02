@@ -21,4 +21,10 @@ class Post < ApplicationRecord
   def like?(user)
     favorite_users.include?(user)
   end
+
+  def self.search(search)
+    if search
+      Post.where(['content LIKE ?', "%#{search}%"])
+    end
+  end
 end
