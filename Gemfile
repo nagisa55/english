@@ -69,3 +69,4 @@ gem "jquery-ui-rails"
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari'
+gem 'high_voltage'

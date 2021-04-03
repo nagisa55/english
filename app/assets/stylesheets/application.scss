@@ -125,7 +125,7 @@ input, select {
 
 
 html, body{
-  height: 100% !important;
+  min-height: 100vh !important;
   margin: 0;
   background-color: #f8f9fa;
 }
@@ -183,6 +183,7 @@ header{
 /*フォーム*/
 .form{
   margin-top: 30px;
+  min-height: 100vh;
   &-details{
     .guest{
       font-size: 15px;
@@ -651,6 +652,7 @@ header{
   }
   .content {
     display: none;
+    min-height: 100vh;
   }
   .content.show {
     margin-top: 50px;
@@ -690,10 +692,30 @@ header{
 
 footer{
   background-color: #343a40;
-  color: white;
-  li{
+  margin-top: auto;
+  height: 10%;
   display: flex;
-  list-style: none;
+  justify-content: center;
+  color: white;
+  ul{
+    margin-top: 30px;
+    li{
+      list-style: none;
+      a{
+        color: white;
+        text-decoration: none !important;
+      }
+    }
   }
 }
+
+.term{
+  width: 90%;
+  margin: 0 auto;
+  padding: 40px 0;
+  .term-section{
+    margin-top: 30px;
+  }
+}
+
 
