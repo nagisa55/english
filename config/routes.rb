@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
   get "signup", to: "users#new"
+  get "contact", to: "contact#index"
+  post "contact/confirm", to: "contact#confirm"
+  post "contact/thanks", to: "contact#thanks"
 
   resources :users
 

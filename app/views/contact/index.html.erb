@@ -1,0 +1,28 @@
+<div class="menu-block">
+  <h2>お問合せ</h2>
+  <%= form_for @contact, :url => contact_confirm_path do |f| %>
+    <% if @contact.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <strong>入力内容にエラーがあります</strong>
+        <ul>
+          <% @contact.errors.each do |attr, msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form">
+      <div class="form-details">
+        <div class="form-group">
+          <%= f.label :name, "お名前(必須)" %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :message, "お問い合わせ内容" %>
+          <%= f.text_area :message, class: 'form-control contact-post' %>
+        </div>
+        <%= f.submit '確認', class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -211,7 +211,6 @@ header{
       input{
         width: 100%;
       }
-
     }
   }
   p{
@@ -674,7 +673,14 @@ header{
   }
 }
 
-/**/
+/*お問合せ*/
+.contact{
+  height: 100vh;
+  textarea{
+    height: 800px;
+  }
+}
+/*お気に入りボタン*/
 .favorite-btn, .fa-thumbs-up{
   color: #fea3a3;
   padding: 5px;
