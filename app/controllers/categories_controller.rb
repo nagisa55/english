@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
   def new
     @category = Category.new
@@ -6,18 +8,19 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-        redirect_to categories_path
+      redirect_to categories_path
     else
-        render :new
+      render :new
     end
-end
+  end
 
-def index
+  def index
     @categories = Category.all
-end
+  end
 
-private
-def category_params
+  private
+
+  def category_params
     params.require(:category).permit(:name)
-end
+  end
 end
