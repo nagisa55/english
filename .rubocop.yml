@@ -1,0 +1,25 @@
+inherit_from: .rubocop_todo.yml
+AllCops:
+#下記のファイルは検証しない
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'config/environments/*'
+    - 'config/application.rb'
+    - 'config/initializers/*'
+    - 'config/spring.rb'
+    - 'lib/tasks/*'
+    - 'vendor/**/*'
+    - 'path/ruby'
+    - 'node_modules/**/*'
+    - 'spec/**/*'
+
+ClassAndModuleChildren:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+AsciiComments:
+  Enabled: false

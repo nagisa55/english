@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
@@ -5,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def require_logged_in
     unless logged_in?
-      flash.now[:danger] = "ログインしてください。"
+      flash.now[:danger] = 'ログインしてください。'
       redirect_to login_path
     end
   end

@@ -112,6 +112,10 @@
                 <%= link_to post_path(favorite.post), class: "link-style" do %>
                   <p class="favorite-post-title"><%= favorite.post.title %></p>
                 <% end %>
+                <span class=favorite-btn>
+                  <i class="fas fa-2x fa-thumbs-up"></i>
+                  <%= favorite.post.favorites.count %>
+                </span>
               </div>
             <% end %>
           <% else %>

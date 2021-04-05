@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ToppagesController < ApplicationController
   def index
     @posts = Post.all.order(created_at: :desc)
