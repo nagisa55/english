@@ -1,14 +1,14 @@
 <span class="like">
 	<% if post.like?(current_user) %>
 		<p class=favorite-btn>
-			<%=link_to post_favorite_path(post), method: :delete, remote: true do %>
+			<%=link_to post_favorite_path(post, Favorite.find_by!(post: post, user: current_user)), method: :delete, remote: true do %>
 				<i class="fas fa-2x fa-thumbs-up"></i>
 			<% end %>
 			<%= post.favorites.count %>
 		</p>
 	<% else %>
 		<p class=favorite-btn>
-			<%=link_to post_favorites_path(post), method: :post, remote: true do %>
+			<%= link_to post_favorites_path(post), method: :post, remote: true do %>
 				<i class="far fa-2x fa-thumbs-up"></i>
 			<% end %>
 			<%= post.favorites.count %>

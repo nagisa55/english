@@ -24,6 +24,11 @@
                 <%= post.content.truncate(40) %>
                 <%= link_to "続きを読む", post_path(post) %>
               </div>
+              <p class="comment-btn">
+                <%= link_to post_path(post) do %>
+                  <i class="far fa-comment-dots">コメント<%= post.comments.count %>件</i>
+                <% end %>
+              </p>
             </div>
           </div>
         <% end %>

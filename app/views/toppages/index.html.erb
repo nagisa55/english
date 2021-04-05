@@ -42,43 +42,43 @@
 </section>
 <section class="menu-block">
   <p class="menu-block-title">新着投稿一覧</p>
-    <article>
-      <% if @posts.present? %>
-        <div class="user-profile-main-block">
-          <div class="user-profile-main-block-post">
-            <% @posts.first(3).each do |post| %>
-              <div class="post-all-division">
-                <div class="post-all-division-top">
-                  <% if post.user.icon? %>
-                    <%= image_tag post.user.icon.url, class: "icon", :size => "40x40" %>
-                  <% else %>
-                    <%= image_tag "icon.jpg", class: "icon", :size => "40x40" %>
-                  <% end %>
-                  <div class="post-title">
-                    <div class="post-all-division-top-user">
-                      <%= link_to user_path(post.user), class: "link-style" do %>
-                        <%= post.user.name %>さんの投稿
-                        <span class="date">(投稿日:<%= post.created_at.strftime('%Y/%m/%d') %>)</span>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-                <div class="post-content">
-                  <p class="post-content-title"><%= post.title %></p>
-                  <div class="post-body">
-                    <%= post.content.truncate(40) %>
-                    <%= link_to "続きを読む", post_path(post) %>
+  <article>
+    <% if @posts.present? %>
+      <div class="user-profile-main-block">
+        <div class="user-profile-main-block-post">
+          <% @posts.first(3).each do |post| %>
+            <div class="post-all-division">
+              <div class="post-all-division-top">
+                <% if post.user.icon? %>
+                  <%= image_tag post.user.icon.url, class: "icon", :size => "40x40" %>
+                <% else %>
+                  <%= image_tag "icon.jpg", class: "icon", :size => "40x40" %>
+                <% end %>
+                <div class="post-title">
+                  <div class="post-all-division-top-user">
+                    <%= link_to user_path(post.user), class: "link-style" do %>
+                      <%= post.user.name %>さんの投稿
+                      <span class="date">(投稿日:<%= post.created_at.strftime('%Y/%m/%d') %>)</span>
+                    <% end %>
                   </div>
                 </div>
               </div>
-            <% end %>
-          </div>
-          <div class= "post-all-view">
-            <%=link_to "すべての投稿を見る", posts_path(@user) %><i class="fa fa-angle-right" aria-hidden="true"></i>
-          </div>
+              <div class="post-content">
+                <p class="post-content-title"><%= post.title %></p>
+                <div class="post-body">
+                  <%= post.content.truncate(40) %>
+                  <%= link_to "続きを読む", post_path(post) %>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    </article>
+        <div class= "post-all-view">
+          <%=link_to "すべての投稿を見る", posts_path(@user) %><i class="fa fa-angle-right" aria-hidden="true"></i>
+        </div>
+      </div>
+    <% end %>
+  </article>
 </section>
 <section class="menu-block">
   <p class="menu-block-title">投稿数が多いユーザー</p>
@@ -119,6 +119,5 @@
     <% end %>
   </div>
 </aside>
-
 
 
