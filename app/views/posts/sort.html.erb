@@ -1,8 +1,5 @@
 <section class="menu-block">
-  <h2><%= @category.name %>の投稿一覧</h2>
   <%= render "posts/postview" %>
 </section>
-<div class="pagination">
-  <%= paginate @posts %>
-</div>
+<%= paginate @posts %>
 <p><%= link_to "戻る", "/", class: "back-btn" %><p>

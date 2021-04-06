@@ -62,6 +62,12 @@ class PostsController < ApplicationController
     @category = Category.find(params[:category_id])
   end
 
+  def sort
+    selection = params[:keyword]
+    @posts = Post.sort(selection)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
+  end
+
   private
 
   def post_params
