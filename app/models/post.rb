@@ -26,4 +26,17 @@ class Post < ApplicationRecord
   def self.search(search)
     Post.where(['content LIKE ?', "%#{search}%"]) if search
   end
+
+  def self.sort(selection)
+    case selection
+    when 'new'
+      return all.order(created_at: :DESC)
+    when 'old'
+      return all.order(created_at: :ASC)
+    when 'likes'
+      return find(Favorite.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+    when 'comment'
+      return find(Comment.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+    end
+  end
 end

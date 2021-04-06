@@ -6,5 +6,7 @@
   <% end %>
   <%= render "posts/postview" %>
 </section>
-<%= paginate @posts %>
+<div class="pagination">
+  <%= paginate @posts %>
+</div>
 <p><%= link_to "戻る", "/", class: "back-btn" %><p>

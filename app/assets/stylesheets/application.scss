@@ -139,6 +139,9 @@ main{
   color: #565656;
 }
 
+a{
+  cursor: pointer !important;
+}
 
 h2{
   text-align: center;
@@ -244,6 +247,19 @@ header{
 	}
 }
 
+.top-bottom{
+  text-align: center;
+  background-color: white;
+  margin: 30px 0;
+  padding: 30px 0;
+  p{
+    margin-top: 5px;
+  }
+  .btn{
+    margin-top: 15px;
+  }
+}
+
 /*検索フォーム*/
 .search{
   width: 1000px;
@@ -278,6 +294,15 @@ header{
   margin-top: 30px;
   &-title{
     font-weight: 500;
+  }
+  .top{
+    margin-top: 15px;
+    &-title{
+      align-items: center;
+      p{
+        font-size: 15px;
+      }
+    }
   }
 }
 .category-menu{
@@ -322,20 +347,12 @@ header{
 
 
 /*ページネーション自体のデザイン*/
-.pagination>li>a {
-  border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
-}
-
-/* 表示しているページ番号のデザイン */
-.pagination>.active>a {
-  background: #93c9ff;     /*背景の色を変える*/
-  border-radius: 15px;     /*角を丸くする*/
-}
-
-/*ホバー時のデザイン*/
-.pagination>li>a:hover {
-  border-radius: 15px;    /*角を丸くする*/
+.pagination {
+  .pagination {
+    margin:auto;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 
@@ -353,16 +370,16 @@ header{
     margin: 30px;
     border: 1px solid #dee2e6;
     width: 80%;
-    .post-others{
-      font-weight: 500;
-      padding: 10px;
-      background-color: #faf8f5;
-      &-each{
-        border: 1px solid #dee2e6;
-        margin: 5px 0;
-        .post-title{
-          background-color: white;
-        }
+  }
+  .post-others{
+    font-weight: 500;
+    padding: 10px;
+    background-color: #faf8f5;
+    &-each{
+      border: 1px solid #dee2e6;
+      margin: 5px 0;
+      .post-title{
+        background-color: white;
       }
     }
   }
@@ -388,6 +405,9 @@ header{
     &-title{
       font-size: 25px;
       font-weight: 500;
+    }
+    &-bottom{
+      display: flex;
     }
     &-body{
       height: auto;
@@ -453,6 +473,7 @@ header{
   border: 1px solid #fea3a3;
   width: 120px;
   padding: 10px;
+  text-align: center;
   a{
     color: #fea3a3;
     font-size: 14px;
@@ -466,7 +487,7 @@ header{
 }
 
 /*新規投稿ページ*/
-.post-create{
+.post-create-{
   margin-top:30px;
   &-form{
     margin: 0 auto;
@@ -553,7 +574,6 @@ header{
 
 .user-all{
   background-color: white;
-  margin: 0 auto;
   width:70%;
   padding: 0 20px;
   margin-top: 30px;
@@ -565,14 +585,18 @@ header{
   }
   &-info{
     display: flex;
-    justify-content: center;
-
+    justify-content: space-between;
     &-division{
       border: 1px solid rgba(34, 34, 34, .125);
       border-radius: .15rem;
       padding: 10px;
-      margin:10px 20px;
-      width:30%;
+      margin: 10px 20px;
+      width: 170px;
+      text-align: center;
+      p{
+        font-size: 12px;
+        margin-top: 10px;
+      }
     }
   }
 }
@@ -612,6 +636,7 @@ header{
         padding: 10px;
         border-left: 1px solid #dee2e6;
         margin-top: 20px;
+        margin-bottom: 20px;
       }
       &-detail{
         margin-top: 30px;
@@ -670,6 +695,7 @@ header{
   }
   &-post-title{
     margin-left: 8px;
+    font-size: 18px;
   }
 }
 
@@ -715,6 +741,7 @@ footer{
   }
 }
 
+/*プライバシーポリシー*/
 .term{
   width: 90%;
   margin: 0 auto;
@@ -724,4 +751,7 @@ footer{
   }
 }
 
-
+/*並び替え機能*/
+.sort{
+  text-align: right;
+}

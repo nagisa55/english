@@ -62,11 +62,17 @@
                     <%= post.content.truncate(40) %>
                     <%= link_to "続きを読む", post_path(post) %>
                   </div>
-                  <p class="comment-btn">
-                    <%= link_to post_path(post) do %>
-                      <i class="far fa-comment-dots">コメント<%= post.comments.count %>件</i>
-                    <% end %>
-                  </p>
+                  <div class="post-content-bottom">
+                    <p class="comment-btn">
+                      <%= link_to post_path(post) do %>
+                        <i class="far fa-comment-dots">コメント<%= post.comments.count %>件</i>
+                      <% end %>
+                    </p>
+                    <span class="favorite-btn">
+                      <i class="fas fa-2x fa-thumbs-up"></i>
+                      <%= post.favorites.count %>
+                    </span>
+                  </div>
                 </div>
               </div>
             <% end %>
@@ -91,11 +97,17 @@
                 <%= post.content.truncate(80) %>
                 <%= link_to "続きを読む", post_path(post) %>
               </div>
-              <p class="comment-btn">
-                <%= link_to post_path(post) do %>
-                  <i class="far fa-comment-dots">コメント<%= post.comments.count %>件</i>
-                <% end %>
-              </p>
+              <div class="post-content-bottom">
+                <p class="comment-btn">
+                  <%= link_to post_path(post) do %>
+                    <i class="far fa-comment-dots">コメント<%= post.comments.count %>件</i>
+                  <% end %>
+                </p>
+                <span class="favorite-btn">
+                  <i class="fas fa-2x fa-thumbs-up"></i>
+                  <%= post.favorites.count %>
+                </span>
+              </div>
             </div>
           </div>
         <% end %>

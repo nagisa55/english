@@ -103,7 +103,7 @@
         <%= link_to post_path(post), class: "link-style" do %>
           <div class="post-title top-title">
             <p><%= post.title %></p>
-            <span class=favorite-btn>
+            <span class="favorite-btn">
               <i class="fas fa-2x fa-thumbs-up"></i>
               <%= post.favorites.count %>
             </span>
@@ -114,13 +114,11 @@
   </section>
 </main>
 <aside>
-  <div class="user-all">
-    <p>＼とっておきの英語の勉強方法を共有しよう／</p>
-    <p>ENPROVEに登録すると、あなたの英語の勉強方法を投稿することが出来ます。</p>
-    <%= link_to new_user_path do %>
-      <button type="button" class="btn btn-gold btn-sm text-white">無料会員登録</button>
-    <% end %>
-  </div>
+  <% unless logged_in? %>
+    <div class="top-bottom">
+      <p>＼とっておきの英語の勉強方法を共有しよう／</p>
+      <p>ENPROVEに登録すると、あなたの英語の勉強方法を投稿することが出来ます。</p>
+        <%= link_to "無料会員登録", new_user_path, class: 'btn btn-default', id: "user-modal" %>
+    </div>
+  <% end %>
 </aside>
-
-
