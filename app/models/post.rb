@@ -29,14 +29,14 @@ class Post < ApplicationRecord
 
   def self.sort(selection)
     case selection
-    when 'new'
-      return all.order(created_at: :DESC)
-    when 'old'
-      return all.order(created_at: :ASC)
-    when 'likes'
-      return find(Favorite.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
-    when 'comment'
-      return find(Comment.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+      when 'new'
+        return all.includes([:user]).order(created_at: :DESC)
+      when 'old'
+        return all.includes([:user]).order(created_at: :ASC)
+      when 'likes'
+        return find(Favorite.includes([:user]).group(:post_id).includes([:user]).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+      when 'comment'
+        return find(Comment.group(:post_id).includes([:user]).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
     end
   end
 end

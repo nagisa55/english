@@ -4,11 +4,11 @@ class PostsController < ApplicationController
 
   def index
     if params[:user_id]
-      @posts = Post.where(user_id: params[:user_id]).order(created_at: :desc)
+      @posts = Post.includes([:user]).where(user_id: params[:user_id]).order(created_at: :desc)
       @posts = @posts.page(params[:page]).per(5)
       @user = User.find(params[:user_id])
     else
-      @posts = Post.all.order(created_at: :desc).page(params[:page]).per(5)
+      @posts = Post.all.includes([:user]).order(created_at: :desc).page(params[:page]).per(5)
     end
   end
 
@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:search])
+    @posts = Post.search(params[:search]).includes([:user])
     @posts = @posts.page(params[:page]).per(5)
   end
 
