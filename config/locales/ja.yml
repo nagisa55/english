@@ -1,5 +1,19 @@
 ja:
   activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: ユーザーネーム
+        email: メールアドレス
+        password_digest: パスワード
+    models:
+      post: 投稿
+    attributes:
+      post:
+        title: タイトル
+        category_id: カテゴリー
+        content: 勉強方法
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
