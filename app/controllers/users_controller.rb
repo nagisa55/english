@@ -3,8 +3,8 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all.includes([:user]).order(created_at: :desc)
-    @favorites = Favorite.includes([:post]).where(user_id: @user)
+    @posts = @user.posts.all.order(created_at: :desc)
+    @favorites = Favorite.includes(post: :user).where(user_id: @user)
   end
 
   def new
@@ -14,9 +14,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
+      flash[:sucesee]= "登録が完了しました"
       redirect_to @user
     else
-      redirect_to :new
+      render :new
     end
   end
 
@@ -27,6 +29,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
+      flash[:success] = "プロフィールを更新しました。"
       redirect_to @user
     else
       render :edit
@@ -38,4 +41,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :icon)
   end
+
 end

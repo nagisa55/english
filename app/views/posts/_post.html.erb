@@ -13,8 +13,8 @@
         <%= f.label :content, "勉強方法" %>
         <%= f.text_area :content %>
       </div>
-      <div class="post">
-        <%= f.submit "投稿する", class: "btn btn-primary w-20" %>
+      <div class="form-group post">
+        <%= f.submit yield(:button_text), class: "btn btn-primary w-20" %>
       </div>
     <% end %>
   </div>

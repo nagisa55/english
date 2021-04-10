@@ -1,6 +1,7 @@
 <div class="form">
   <div class="form-details">
 <h2>プロフィール編集</h2>
+<% provide(:button_text, 'プロフィールを編集する') %>
     <%= form_with model: @user do |f| %>
       <div class="form-group">
         <%= f.label :name, "ユーザーネーム" %>
@@ -38,7 +39,7 @@
         <%= f.password_field :password_confirmation, class: 'form-control'  %>
       </div>
       <div class="form-group">
-        <%= f.submit "編集する", class: "btn btn-primary" %>
+        <%= f.submit yield(:button_text), class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>
