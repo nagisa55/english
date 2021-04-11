@@ -14,7 +14,10 @@
         <p class="post-user-name"><%= @user.name %>さんの投稿</p>
       </div>
       <div class="post-content">
-        <p class="post-content-title">
+        <div class="post-content-title">
+          <div class="category-tag">
+            <%= @post.category.name %>
+          </div>
           <%= @post.title %>
           <span class="date">(投稿日:<%= @post.created_at.strftime('%Y/%m/%d') %>)</span>
           <% if @user == current_user %>
@@ -23,7 +26,7 @@
               <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "投稿を削除しますか?" } %>
             </div>
           <% end %>
-        </p>
+        </div>
         <div class="post-content-body">
           <%= @post.content %>
         </div>
@@ -53,12 +56,16 @@
       <% end %>
     </div>
   </div>
-  <div class="comment">
-    <%= form_with(model: [@post, @comment], local: true) do |f| %>
-      <%= f.text_area :content, :placeholder => "コメントを入力(200字以内)"  %>
-      <%= f.submit 'コメントする' %>
-    <% end %>
-  </div>
+  <% if logged_in? %>
+    <div class="comment">
+      <%= form_with(model: [@post, @comment], local: true) do |f| %>
+        <%= f.text_area :content, :placeholder => "コメントを入力(200字以内)"  %>
+        <%= f.submit 'コメントする' %>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="comment-notice">※コメントするには、ログインしてください。</p>
+  <% end %>
   <aside>
     <div class="post-others">
       <p class="post-user-name"><%= @user.name %>さんの他の投稿</p>

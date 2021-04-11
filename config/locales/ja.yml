@@ -1,15 +1,11 @@
 ja:
   activerecord:
-    models:
-      user: ユーザー
     attributes:
       user:
         name: ユーザーネーム
         email: メールアドレス
         password_digest: パスワード
-    models:
-      post: 投稿
-    attributes:
+        password: パスワード
       post:
         title: タイトル
         category_id: カテゴリー

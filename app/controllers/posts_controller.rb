@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 class PostsController < ApplicationController
-  before_action :require_logged_in, except: [:search]
+  before_action :require_logged_in, only: [:new, :create]
 
   def index
     if params[:user_id]
-      @posts = Post.includes([:user]).where(user_id: params[:user_id]).order(created_at: :desc)
+      @posts = Post.includes([:user],[:category]).where(user_id: params[:user_id]).order(created_at: :desc)
       @posts = @posts.page(params[:page]).per(5)
       @user = User.find(params[:user_id])
     else
-      @posts = Post.all.includes([:user]).order(created_at: :desc).page(params[:page]).per(5)
+      @posts = Post.all.includes([:user],[:category]).order(created_at: :desc).page(params[:page]).per(5)
     end
   end
 
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     @user = @post.user
     @posts = @user.posts.all.order(created_at: :desc)
     @comments = @post.comments
-    @comment = current_user.comments.new
+    @comment = Comment.new
   end
 
   def edit
@@ -57,7 +57,7 @@ class PostsController < ApplicationController
   end
 
   def category
-    @posts = Post.preload(:user).where(category_id: params[:category_id]).order(created_at: :desc)
+    @posts = Post.preload(:user,:category).where(category_id: params[:category_id]).order(created_at: :desc)
     @posts = @posts.page(params[:page]).per(5)
     @category = Category.find(params[:category_id])
   end

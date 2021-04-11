@@ -425,6 +425,19 @@ header{
   width:200px;
   margin-left: auto;
 }
+
+.category-tag{
+  font-size: 10px;
+  margin-bottom: 10px;
+  background-color: #fea3a3;
+  border: 1px solid #fea3a3;
+  width: 80px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 15px;
+  color: white;
+}
+
 /*日付*/
 .date{
   color: #6c757d;
@@ -442,6 +455,10 @@ header{
   }
   &-content{
     margin-top: 5px;
+  }
+  &-notice{
+    color: #6c757d;
+    margin-left: 30px;
   }
 }
 
@@ -487,17 +504,15 @@ header{
 }
 
 /*新規投稿ページ*/
-.post-create{
-  margin-top:30px;
-  &-form{
-    margin: 0 auto;
-    border: 1px solid #dee2e6;
-    background-color: white;
-    width: 90%;
-    padding: 20px;
-    &-details{
-      width: 80%;
-    }
+.post-create-form{
+  margin: 0 auto;
+  border: 1px solid #dee2e6;
+  background-color: white;
+  width: 90%;
+  padding: 20px;
+  margin-top: 50px;
+  &-details{
+  width: 80%;
   }
 }
 
@@ -767,4 +782,9 @@ footer{
   li{
     list-style: none;
   }
+}
+
+/*アカウント削除*/
+.account-delete{
+  text-align: center;
 }

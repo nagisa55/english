@@ -24,6 +24,9 @@
               </div>
             </div>
             <div class="post-content">
+              <div class="category-tag">
+                <%= post.category.name %>
+              </div>
               <p class="post-content-title"><%= post.title %></p>
               <div class="post-body">
                 <%= post.content.truncate(40) %>

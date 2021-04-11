@@ -12,18 +12,7 @@
         <%= @user.name %>さんのページ
       </div>
     </div>
-    <nav class="navbar navbar-default">
-      <ul class="nav navbar-nav user-profile-menu tab-area", id="tab">
-        <li class="tab active">TOP</li>
-        <li class="tab">投稿一覧</li>
-        <li class="tab">お気に入り</li>
-        <li class="tab">
-        <% if @user == current_user %>
-          <%= link_to "設定", edit_user_path(current_user) %>
-        </li>
-        <% end %>
-      </ul>
-    </nav>
+    <%= render "tab_menu" %>
     <div class="content-area">
       <div class="user-profile-main-block content show">
         <div class="user-profile-main-block-title">
@@ -57,7 +46,12 @@
                   <span class="date">(<%= post.created_at.strftime('%Y/%m/%d') %>)</span>
                 </div>
                 <div class="post-content">
-                  <p class="post-content-title"><%= post.title %></p>
+                  <div class="category-tag">
+                    <%= post.category.name %>
+                  </div>
+                  <p class="post-content-title">
+                    <%= post.title %>
+                  </p>
                   <div class="post-body">
                     <%= post.content.truncate(40) %>
                     <%= link_to "続きを読む", post_path(post) %>
@@ -83,57 +77,10 @@
         </div>
       </div>
       <div class="content post-all">
-        <% @posts.each do |post| %>
-          <div class="post-all-division">
-            <div class="post-title">
-              <%= link_to post_path(post) do %>
-                <p><%= post.title %></p>
-              <% end %>
-              <span class="date">(投稿:<%= post.created_at.strftime('%Y/%m/%d') %>)</span>
-            </div>
-            <div class="post-content">
-              <p class="post-content-title"><%= post.title %></p>
-              <div class="post-body">
-                <%= post.content.truncate(80) %>
-                <%= link_to "続きを読む", post_path(post) %>
-              </div>
-              <div class="post-content-bottom">
-                <p class="comment-btn">
-                  <%= link_to post_path(post) do %>
-                    <i class="far fa-comment-dots">コメント<%= post.comments.count %>件</i>
-                  <% end %>
-                </p>
-                <span class="favorite-btn">
-                  <i class="fas fa-2x fa-thumbs-up"></i>
-                  <%= post.favorites.count %>
-                </span>
-              </div>
-            </div>
-          </div>
-        <% end %>
+        <%= render "post_all" %>
       </div>
       <div class="content">
-        <p class="user-profile-main-block-title"><%= @user.name %>さんのお気に入り投稿一覧<p>
-        <div class="favorite">
-          <% if @favorites.present? %>
-            <% @favorites.each do |favorite| %>
-              <div class="post-all-division-top">
-                <%= link_to user_path(favorite.post.user) do %>
-                  <p><%= image_tag favorite.post.user.icon.url, class: "icon", :size => "50x50"%></p>
-                <% end %>
-                <%= link_to post_path(favorite.post), class: "link-style" do %>
-                  <p class="favorite-post-title"><%= favorite.post.title %></p>
-                <% end %>
-                <span class=favorite-btn>
-                  <i class="fas fa-2x fa-thumbs-up"></i>
-                  <%= favorite.post.favorites.count %>
-                </span>
-              </div>
-            <% end %>
-          <% else %>
-            <p>お気に入りした投稿はありません。<p>
-          <% end %>
-        </div>
+        <%= render "favorite_all" %>
       </div>
     </div>
   </div>
