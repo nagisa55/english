@@ -29,7 +29,7 @@ RSpec.describe User, type: :model do
       expect(@user.errors[:password]).to include("を入力してください")
     end
 
-    it "メールがない場合、無効である" do
+    it "メールアドレスがない場合、無効である" do
       @user.email = ""
       @user.valid?
       expect(@user.errors[:email]).to include("を入力してください")
