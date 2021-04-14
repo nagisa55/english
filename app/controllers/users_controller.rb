@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all.order(created_at: :desc)
+    @posts = @user.posts.all.includes([:category]).order(created_at: :desc)
     @favorites = Favorite.includes(post: :user).where(user_id: @user)
   end
 
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:sucesee]= "登録が完了しました"
+      flash[:success]= "登録が完了しました"
       redirect_to @user
     else
       render :new

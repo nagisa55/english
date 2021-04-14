@@ -1,0 +1,28 @@
+<% @posts.each do |post| %>
+  <div class="post-all-division">
+    <div class="post-title">
+      <%= link_to post_path(post) do %>
+        <p><%= post.title %></p>
+      <% end %>
+      <span class="date">(投稿:<%= post.created_at.strftime('%Y/%m/%d') %>)</span>
+    </div>
+    <div class="post-content">
+      <p class="post-content-title"><%= post.title %></p>
+      <div class="post-body">
+        <%= post.content.truncate(80) %>
+        <%= link_to "続きを読む", post_path(post) %>
+      </div>
+      <div class="post-content-bottom">
+        <p class="comment-btn">
+          <%= link_to post_path(post) do %>
+            <i class="far fa-comment-dots">コメント<%= post.comments.count %>件</i>
+          <% end %>
+        </p>
+        <span class="favorite-btn">
+          <i class="fas fa-2x fa-thumbs-up"></i>
+          <%= post.favorites.count %>
+        </span>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,6 +1,7 @@
 <div class="post-form-details">
   <div class="form-details-post">
     <%= form_with(model:@post, local:true) do |f| %>
+      <%= render "layouts/error_message", model: f.object %>
       <div class="form-group">
         <%= f.label :title, "タイトル" %>
         <%= f.text_field :title %>
@@ -8,7 +9,7 @@
       <div class="form-group">
         <%= f.label :category_id, "カテゴリー", class: "category"  %>
         <%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => "カテゴリを選択してください" %>
-        </div>
+      </div>
       <div class="form-group">
         <%= f.label :content, "勉強方法" %>
         <%= f.text_area :content %>

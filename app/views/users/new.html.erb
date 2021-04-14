@@ -2,7 +2,8 @@
   <div class="form-details">
     <h2>新規登録</h2>
     <% provide(:button_text, '新規登録') %>
-      <%= form_with model: @user do |f| %>
+      <%= form_with model: @user, local: true do |f| %>
+        <%= render "layouts/error_message", model: f.object %>
         <div class="form-group">
           <%= f.label :name, "ユーザーネーム" %>
           <%= f.text_field :name, class: 'form-control' %>

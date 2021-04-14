@@ -1,0 +1,12 @@
+<nav class="navbar navbar-default">
+  <ul class="nav navbar-nav user-profile-menu tab-area", id="tab">
+    <li class="tab active">TOP</li>
+    <li class="tab">投稿一覧</li>
+    <li class="tab">お気に入り</li>
+    <li class="tab">
+    <% if @user == current_user %>
+      <%= link_to "設定", edit_user_path(current_user) %>
+    </li>
+    <% end %>
+  </ul>
+</nav>
