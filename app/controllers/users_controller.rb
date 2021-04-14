@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all.order(created_at: :desc)
+    @posts = @user.posts.all.includes([:category]).order(created_at: :desc)
     @favorites = Favorite.includes(post: :user).where(user_id: @user)
   end
 

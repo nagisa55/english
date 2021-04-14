@@ -7,8 +7,4 @@ FactoryBot.define do
     good_point { "good_point" }
     profile { "Hello" }
   end
-  factory :another_user, parent: :user do
-    name { "suzuki" }
-    email { "suzuki@test.com" }
-  end
 end

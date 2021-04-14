@@ -9,6 +9,7 @@ ja:
       post:
         title: タイトル
         category_id: カテゴリー
+        category: カテゴリー
         content: 勉強方法
     errors:
       messages:

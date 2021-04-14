@@ -35,7 +35,7 @@ class Post < ApplicationRecord
         return all.includes([:user], [:category]).order(created_at: :ASC)
       when 'likes'
         post_ids = Favorite.group(:post_id).includes([:user]).order(Arel.sql('count(post_id) desc')).pluck(:post_id)
-        return where(id: post_ids).includes(:category)
+        return where(id: post_ids).includes(:category, :user)
       when 'comment'
         post_ids = Comment.group(:post_id).includes([:user]).order(Arel.sql('count(post_id) desc')).pluck(:post_id)
         return where(id: post_ids).includes(:user)
