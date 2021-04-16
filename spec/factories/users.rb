@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :user do
     name { "tanaka" }
-    email { "tanaka@test.com" }
+    sequence(:email) { |n| "test#{n}@test.com" }
     password_digest { "password" }
-    icon { "icon" }
+    icon { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/image.jpg')) }
     good_point { "good_point" }
     profile { "Hello" }
   end

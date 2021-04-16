@@ -47,12 +47,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
     @post.destroy
-    redirect_to root
+    redirect_to user_path(@post.user_id)
   end
 
   def search
-    @posts = Post.search(params[:search]).includes([:user])
+    @posts = Post.search(params[:search]).includes([:user],[:category])
+    @keyword = params[:search]
     @posts = @posts.page(params[:page]).per(5)
   end
 

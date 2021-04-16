@@ -1,5 +1,6 @@
 <div class="menu-block">
   <h2>検索結果一覧</h2>
+  <p class="search-keyword">検索キーワード:<%= @keyword %></p>
   <% if @posts.present? %>
     <%= render "posts/postview" %>
     <%= paginate @posts %>
