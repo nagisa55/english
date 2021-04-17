@@ -19,6 +19,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
+      flash[:success] = '投稿しました。'
       redirect_to user_path(current_user)
     else
       render :new
