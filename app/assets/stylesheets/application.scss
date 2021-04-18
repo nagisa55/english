@@ -226,7 +226,7 @@ header{
 .top-page{
   position: relative;
   height: 70vh;
-  background-image: url(<%= asset_path 'topimage.png' %>);
+  background-image: url('/images/topimage.png');
   background-size: cover;
   background-repeat: no-repeat;
   margin-bottom: 40px;
