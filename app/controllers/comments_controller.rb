@@ -7,9 +7,11 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = params[:post_id]
     if @comment.save
+      flash[:success] = "コメントしました。"
       redirect_to @comment.post
     else
-      redirect_to root_path
+      flash[:danger] = "コメント出来ませんでした。"
+      redirect_to @comment.post
     end
   end
 
