@@ -6,6 +6,7 @@ ja:
         email: メールアドレス
         password_digest: パスワード
         password: パスワード
+        Password confirmation: パスワード(確認用)
       post:
         title: タイトル
         category_id: カテゴリー
