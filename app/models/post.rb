@@ -24,7 +24,7 @@ class Post < ApplicationRecord
   end
 
   def self.search(search)
-    Post.where(['content LIKE ?', "%#{search}%"]) if search
+    Post.where(['content LIKE ?', "%#{search}%"])
   end
 
   def self.sort(selection)

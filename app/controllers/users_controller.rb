@@ -1,9 +1,11 @@
 # frozen_string_literal: true
-
 class UsersController < ApplicationController
+  before_action :require_logged_in, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all.includes([:category]).order(created_at: :desc)
+    @posts = @user.posts.all.order(created_at: :desc)
     @favorites = Favorite.includes(post: :user).where(user_id: @user)
   end
 
@@ -36,10 +38,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "アカウントを削除しました。"
+    redirect_to root_url
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :icon)
   end
 
+  def correct_user
+		@user = User.find(params[:id])
+    redirect_to root_path	unless current_user?(@user)
+	end
 end

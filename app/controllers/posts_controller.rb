@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class PostsController < ApplicationController
   before_action :require_logged_in, only: [:new, :create]
+  before_action :correct_user, only: [:destroy, :edit, :update]
 
   def index
     if params[:user_id]
@@ -19,6 +20,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
+      flash[:success] = '投稿しました。'
       redirect_to user_path(current_user)
     else
       render :new
@@ -47,12 +49,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
     @post.destroy
-    redirect_to root
+    redirect_to user_path(@post.user_id)
   end
 
   def search
-    @posts = Post.search(params[:search]).includes([:user])
+    @posts = Post.search(params[:search]).includes([:user],[:category])
+    @keyword = params[:search]
     @posts = @posts.page(params[:page]).per(5)
   end
 
@@ -72,5 +76,12 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :content, :category_id)
+  end
+
+  def correct_user
+    @post = current_user.posts.find_by(id: params[:id])
+    unless @post
+      redirect_to current_user
+    end
   end
 end

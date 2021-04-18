@@ -23,16 +23,32 @@ RSpec.describe User, type: :model do
       expect(@user.errors[:name]).to include("を入力してください")
     end
 
+    it "ユーザーネームが11文字以上の場合、無効である" do
+      @user.name = @user.name * 10
+      expect(@user.valid?). to eq(false)
+    end
+
     it "パスワードがない場合、無効である" do
-      @user.password_digest = ""
+      @user.password = nil
       @user.valid?
-      expect(@user.errors[:password]).to include("を入力してください")
+      expect(@user.valid?).to eq(false)
+    end
+
+    it "パスワードが11文字以上の場合、無効である" do
+      @user.password = "aaaaaaaaaaaaaaaaa"
+      @user.valid?
+      expect(@user.valid?).to eq(false)
     end
 
     it "メールアドレスがない場合、無効である" do
       @user.email = ""
       @user.valid?
       expect(@user.errors[:email]).to include("を入力してください")
+    end
+
+    it "メールアドレスが256文字以上の場合、無効である" do
+      @user.email = @user.email * 100
+      expect(@user.valid?). to eq(false)
     end
 
     it "重複したメールアドレスの場合、無効である" do

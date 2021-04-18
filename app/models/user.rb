@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :profile, length: { maximum: 250 }
   validates :good_point, length: { maximum: 100 }
   has_secure_password
+  validates :password, presence: true, length: {maximum: 10}
   mount_uploader :icon, IconUploader
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy

@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
+  before do
+    @post = create(:post)
+  end
   describe "バリデーション" do
-    before do
-      @post = create(:post)
-      end
-
     it "タイトル、カテゴリー、投稿内容を入力すると投稿できる" do
       expect(@post).to be_valid
     end
@@ -26,25 +25,16 @@ RSpec.describe Post, type: :model do
     end
   end
 
-  describe "クラスメソッド" do
-    it "検索文字列に一致する投稿を表示" do
-      user = User.create(
-        name: "satou",
-        email: "satou@test.com",
-        password_digest: "password"
-      )
-
-      post1 = user.posts.create(
-        content: "Learning English",
-        title: "eigo",
-        category_id: 2
-      )
-      post2 = user.posts.create(
-        content: "Studying English",
-        title: "eigo",
-        category_id: 2
-      )
-      expect(Post.search("Studying")).to include(post2)
+  describe "キーワード検索" do
+    context "検索文字列に一致する場合" do
+      it "検索文字列に一致する投稿を表示" do
+        expect(Post.search("Learning")).to include(@post)
+      end
+    end
+    context "検索文字列に一致しない場合" do
+      it "検索結果はありませんのページ表示" do
+        expect(Post.search("Studying")).to be_empty
+      end
     end
   end
 end
