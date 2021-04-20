@@ -77,7 +77,6 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'mini_magick'
-gem 'sass-rails', '~>5.0'
 
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
