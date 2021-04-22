@@ -5,7 +5,6 @@ RSpec.describe User, type: :model do
     before do
       @user = create(:user)
     end
-
     it "ユーザーネーム、パスワード、メール、パスワードがある場合は有効である" do
       expect(@user).to be_valid
     end

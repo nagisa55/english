@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :category do
-    id { 1 }
+    sequence(:id) { |n| n }
     name { "リーディング" }
   end
 end

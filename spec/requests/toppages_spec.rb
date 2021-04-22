@@ -28,5 +28,9 @@ RSpec.describe "Toppages", type: :request do
       expect(response.body).to include user.name
     end
 
+    it "ユーザーのアイコンが表示されていること" do
+      expect(response.body).to include user.icon.url
+    end
+
   end
 end
