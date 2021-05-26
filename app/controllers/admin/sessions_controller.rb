@@ -2,7 +2,6 @@
 
 class Admin::SessionsController < ApplicationController
   def new
-
   end
 
   def create
@@ -10,7 +9,7 @@ class Admin::SessionsController < ApplicationController
     password = params[:session][:password]
     if login(email, password)
       flash[:success] = 'ログインしました。'
-      redirect_to @user
+      redirect_to admin_posts_path
     else
       flash.now[:danger] = 'ログイン出来ませんでした。'
       render :new
@@ -26,9 +25,9 @@ class Admin::SessionsController < ApplicationController
   private
 
   def login(email, password)
-    @user = User.find_by(email: email)
-    if @user && @user.authenticate(password)
-      session[:user_id] = @user.id
+    @administrator = Administrator.find_by(email: email)
+    if @administrator && @administrator.authenticate(password)
+      session[:administrator_id] = @administrator.id
       true
     else
       false
