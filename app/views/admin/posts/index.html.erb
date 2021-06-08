@@ -1,4 +1,4 @@
-<h2>投稿一覧</h2>
+<h2>管理者用ページ</h2>
 <article>
   <% if @posts.present? %>
     <div class="user-profile-main-block">
@@ -19,14 +19,17 @@
               </div>
             </div>
             <div class="post-content">
+              <div class="category-tag">
+                <%= post.category.name %>
+              </div>
               <p class="post-content-title"><%= post.title %></p>
               <div class="post-body">
                 <%= post.content.truncate(40) %>
                 <%= link_to "続きを読む", post_path(post) %>
               </div>
+              <%= link_to "削除する", admin_post_path(post), method: :delete, data: { confirm: "投稿を削除しますか?" } %>
             </div>
           </div>
-          <%= link_to "削除", [:admin, post], method: :delete, data: { confirm: "投稿を削除しますか?" } %>
         <% end %>
       </div>
     </div>

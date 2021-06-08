@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   resources :users
 
   resources :posts do
-    resources :comments, only: %i[create destroy]
-    resources :favorites, only: %i[create destroy]
+    resources :comments, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
     collection do
       get :search
       get :category
@@ -25,9 +25,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get 'login', to: 'sessions#new'
-    post 'login', to: 'sessions#create'
-    delete 'logout', to: 'sessions#destroy'
-    resources :posts, only: [:destroy, :index]
+    resources :posts, only: [:index, :destroy]
   end
 end
