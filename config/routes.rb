@@ -15,12 +15,16 @@ Rails.application.routes.draw do
   resources :users
 
   resources :posts do
-    resources :comments, only: %i[create destroy]
-    resources :favorites, only: %i[create destroy]
+    resources :comments, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
     collection do
       get :search
       get :category
       get :sort
     end
+  end
+
+  namespace :admin do
+    resources :posts, only: [:index, :destroy]
   end
 end
