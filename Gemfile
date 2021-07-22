@@ -44,6 +44,10 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 5.0.0'
   gem "factory_bot_rails"
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
 end
 
 group :development do
@@ -80,4 +84,5 @@ gem 'mini_magick'
 
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
+  gem 'unicorn'
 end
