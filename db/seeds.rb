@@ -1,4 +1,3 @@
-
 20.times do |n|
   User.create!(
     name: "田中#{n + 1}",
@@ -13,8 +12,8 @@ end
 User.create!(
   name: "管理者",
   email: "admin@example.com",
-  password: "password",
-  password_confirmation: "password",
+  password: "adminuser",
+  password_confirmation: "adminuser",
   admin: true
 )
 
@@ -43,12 +42,12 @@ Category.create!(
 )
 
 5.times do |n|
-    Post.create!(
-      user_id: "#{n+1}",
-      title: "この方法でリーディング力がアップしました",
-      content: "この方法でリーディング力がアップしました。あいうえおあいうえおあいうえおあいうえおあいうえおあいうえお",
-      category_id: 1
-    )
+  Post.create!(
+    user_id: "#{n+1}",
+    title: "この方法でリーディング力がアップしました",
+    content: "この方法でリーディング力がアップしました。あいうえおあいうえおあいうえおあいうえおあいうえおあいうえお",
+    category_id: 1
+)
 end
 
 5.times do |n|
@@ -84,7 +83,3 @@ end
     post_id: "#{n+1}"
   )
 end
-
-
-
-

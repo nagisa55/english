@@ -1,15 +1,20 @@
 <header>
   <div class="header-menu">
     <%= link_to "ENPROVE", root_path %>
-    <% if logged_in? %>
+    <% if current_user&.admin? %>
+      <nav>
+        <ul class="header-menu-right">
+          <li><%= link_to "ホーム", root_path %></li>
+          <li><%= link_to "投稿管理", admin_posts_path %></li>
+          <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+        </ul>
+      </nav>
+    <% elsif logged_in? %>
       <nav>
         <ul class="header-menu-right">
           <li><%= link_to "ホーム", root_path %></li>
           <li><%= link_to "myページ", user_path(current_user) %></li>
           <li><%= link_to "投稿", new_post_path %></li>
-          <% if current_user.admin? %>
-            <li><%= link_to "投稿管理", admin_posts_path %>
-          <% end %>
           <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
         </ul>
       </nav>
