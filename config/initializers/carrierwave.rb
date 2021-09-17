@@ -8,6 +8,7 @@ unless Rails.env.development? || Rails.env.test?
       region: 'ap-northeast-1'
     }
 
+    config.fog_public = false
     config.fog_directory  = 'rails-images-123'
     config.cache_storage = :fog
   end
