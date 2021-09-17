@@ -81,8 +81,10 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'mini_magick'
+gem 'fog-aws' 
 
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
   gem 'unicorn'
 end
+
