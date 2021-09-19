@@ -89,7 +89,11 @@
       <% @ranking_users.each do |user| %>
         <div class=user-all-info-division>
           <%=link_to user_path(user), class: "link-style" do %>
-            <%= image_tag user.icon.url, class: "icon", :size => "100x100" %>
+            <% if user.icon? %>
+              <%= image_tag user.icon.url, class: "icon", :size => "100x100" %>
+            <% else %>
+              <%= image_tag "icon.jpg", class: "icon", :size => "40x40" %>
+            <% end %>
             <div>
               <%= user.name %>
               <p>投稿数:<%= user.posts.count %></p>
