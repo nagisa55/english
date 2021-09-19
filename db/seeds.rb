@@ -5,7 +5,7 @@
     profile: "宜しくお願いします。",
     password: "aaaaaa#{n + 1}",
     password_confirmation: "aaaaaa#{n + 1}",
-    icon: File.open("./app/assets/images/take.jpg")
+    #icon: File.open("./app/assets/images/take.jpg")
   )
 end
 
