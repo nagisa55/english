@@ -9,6 +9,11 @@
           <%= @contact.name %>
         </div>
         <div class="form-group">
+          <p>メールアドレス</p>
+          <%= f.hidden_field :email %>
+          <%= @contact.email %>
+        </div>
+        <div class="form-group">
           <p>お問合せ内容</p>
           <%= f.hidden_field :message %>
           <%= simple_format(@contact.message) %>

@@ -11,6 +11,10 @@ ja:
         category_id: カテゴリー
         category: カテゴリー
         content: 勉強方法
+      contact:
+        name: ユーザーネーム
+        email: メールアドレス
+        message: お問い合わせ内容
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
