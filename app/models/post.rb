@@ -1,11 +1,8 @@
-# frozen_string_literal: true
-
 class Post < ApplicationRecord
   belongs_to :user
   validates :user_id, presence: true
   validates :title, presence: true, length: { maximum: 50 }
   validates :content, presence: true, length: { maximum: 500 }
-  validates :category_id, presence: true
   belongs_to :category
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
