@@ -2,8 +2,9 @@ FROM ruby:2.6.3
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get update -qq && \
     apt-get install -y build-essential \ 
+		      vim \
                        libpq-dev \        
-                       nodejs mysql-client    
+                       nodejs mariadb-client   
 
 RUN mkdir /app_name 
 
