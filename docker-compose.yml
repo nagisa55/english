@@ -1,5 +1,15 @@
 version: '3'
 services:
+  nginx:
+    build: nginx
+    volumes:
+      - public-data:/app_name/public
+      - tmp-data:/app_name/tmp
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+
   db:
     image: mysql:5.7
     environment:
@@ -22,3 +32,8 @@ services:
       - "3000:3000"
     links:
       - db
+volumes:
+  public-data:
+  tmp-data:
+  log-data:
+  db-data:
