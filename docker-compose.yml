@@ -32,6 +32,8 @@ services:
       - tmp-data:/app_name/tmp
     ports:
       - "80:80"
+    volumes_from:
+      - web
     depends_on:
       - web
 
