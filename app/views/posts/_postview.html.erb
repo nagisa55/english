@@ -11,9 +11,11 @@
         <% @posts.each do |post| %>
           <div class="post-all-division">
             <div class="post-all-division-top">
-              <div>
-                <%= image_tag post.user.icon.url, class: "icon", :size => "40x40"  %>
-              </div>
+              <% if post.user.icon? %>
+                <%= image_tag post.user.icon.url, class: "icon", :size => "40x40" %>
+              <% else %>
+                <%= image_tag "icon.jpg", class: "icon", :size => "40x40" %>
+              <% end %>
               <div class="post-title">
                 <div class="post-all-division-top-user">
                   <%= link_to user_path(post.user), class: "link-style" do %>
